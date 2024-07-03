@@ -1,0 +1,13 @@
+node_modules/
+.env
+database/
+public/images/*
+public/upload/*
+storage/
+vendor/
+.editorconfig
+.env.example
+composer.json
+composer.lock
+package-lock.json
+package.json
