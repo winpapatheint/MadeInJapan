@@ -1,10 +1,10 @@
-node_modules/
+node_modules
 .env
-database/
+database
 public/images/*
 public/upload/*
-storage/
-vendor/
+storage
+vendor
 .editorconfig
 .env.example
 composer.json
