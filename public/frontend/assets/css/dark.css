@@ -22350,7 +22350,7 @@ header .header-nav .header-nav-left .dropdown-category {
     -ms-flex-pack: center;
     justify-content: center;
     padding: calc(10px + (15 - 10) * ((100vw - 320px) / (1920 - 320))) calc(16px + (31 - 16) * ((100vw - 320px) / (1920 - 320)));
-    background: var(--theme-color2);
+    background: var(--theme-color);
     color: #2a2d2d;
     border-radius: 5px;
     border: none

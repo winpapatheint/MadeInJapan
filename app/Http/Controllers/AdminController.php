@@ -2465,6 +2465,9 @@ class AdminController extends Controller
 
     public function  updatecategoryname(Request $request)
     {
+        if (Category::where('category_name', $request->category)->exists()) {
+            return back()->with(['error' => 'Category name already exists.']);
+        }
         // Retrieve the input values
         $category = $request->input('category');
 
@@ -3178,6 +3181,9 @@ class AdminController extends Controller
 
     public function storecategory(Request $request)
     {
+        if (Category::where('category_name', $request->title)->exists()) {
+            return back()->withErrors(['title' => 'Category name already exists.'])->withInput();
+        }
 
         $valarr = array('title' => 'required|string|max:255',);
 

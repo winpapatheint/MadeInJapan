@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('frontend/assets/logos/newstyle_slogo.png') }}" type="image/x-icon">
-    <title>New Style Life</title>
+    <title>Made In Japan</title>
 
     <!-- Google Font css -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -367,7 +367,7 @@
                                     align="center" style="margin: 8px auto 20px;">
                                     <tr>
                                         <td style="font-size: 19px; font-weight: 700;">Shop For <span
-                                                class="theme-color">New Style Life</span></td>
+                                                class="theme-color">Made In Japan</span></td>
                                     </tr>
                                 </table>
                                 <table border="0" cellpadding="0" cellspacing="0" class="footer-social-icon text-center"

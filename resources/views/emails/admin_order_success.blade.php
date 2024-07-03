@@ -105,7 +105,7 @@
             </tbody>
         </table>
 
-        <p>New Style Life.</p>
+        <p>Made In Japan.</p>
         <div class="footer">
             <p>This mail was sent to all admins - Admin Team</p>
         </div>

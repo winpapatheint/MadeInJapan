@@ -161,17 +161,17 @@
                                 <td style="display: block;">
                                     <h3
                                         style="font-weight: 700; font-size: 20px; margin: 0; text-transform: uppercase;">
-                                        Hi {{ $user->name }} ! Welcome To New Style Life.</h3>
+                                        Hi {{ $user->name }} ! Welcome To Made In Japan.</h3>
                                 </td>
 
                                 <td>
                                     <p
                                         style="font-size: 14px;font-weight: 600;width: 82%;margin: 8px auto 0;line-height: 1.5;color: #939393;font-family: 'Nunito Sans', sans-serif;">
                                         Be it a manufacturer, vendor or supplier, simply sell your products online on 
-                                        New Style Life and become a top ecommerce player with minimum investment. 
+                                        Made In Japan and become a top ecommerce player with minimum investment. 
                                         Through a team of experts offering exclusive seller workshops, training, seller support 
-                                        and convenient seller portal, New Style Life focuses on educating and empowering 
-                                        sellers across Japan. Selling on New Style Life is easy and absolutely free. 
+                                        and convenient seller portal, Made In Japan focuses on educating and empowering 
+                                        sellers across Japan. Selling on Made In Japan is easy and absolutely free. 
                                         All you need is to register, list your catalogue and start selling your products. 
                                         Before we get started, we’ll need to verify your email.<br>
                                         <span style="color: red">If you don't receive the email, please check your spam or junk folder.</span>
@@ -226,7 +226,7 @@
                                     <tr>
                                         <td>
                                             <h4 style="font-size: 19px; font-weight: 700; margin: 0;">Shop For <span
-                                                    class="theme-color">New Style Life</span></h4>
+                                                    class="theme-color">Made In Japan</span></h4>
                                         </td>
                                     </tr>
                                 </table>

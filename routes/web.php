@@ -142,7 +142,7 @@ Route::get('/admin/transferdetail', function () {
 })->middleware(['auth', 'role:admin'])->name('admin.transferdetail');
 Route::get('admin/transfer-order-details/{transferId}', [AdminController::class, 'indextransferorderdetail'])->name('transfer_order_detail');
 Route::get('/trans_orderdetail/{id}/{startdate}/{enddate}', [AdminController::class, 'trans_orderdetail'])->middleware(['auth', 'role:admin'])->name('trans_orderdetail');
-Route::get('/admin/category', [AdminController::class, 'indexcategory'])->middleware(['auth', 'verified', 'role:admin']);
+// Route::get('/admin/category', [AdminController::class, 'indexcategory'])->middleware(['auth', 'verified', 'role:admin']);
 Route::get('/admin/addcategory', function () {
     return view('back-end.addcategory');
 });

@@ -72,7 +72,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="{{ $message->embed(public_path('images/logos/MailHeader_NSL.jpg')) }}" alt="New Style Life Logo">
+            <img src="{{ $message->embed(public_path('images/logos/MailHeader_NSL.jpg')) }}" alt="Made In Japan Logo">
         </div>
         <div class="content">
             <p style="text-align: center;">
@@ -111,7 +111,7 @@
         </div>
         <div class="footer">
             <p>Admin Team,</p>
-            <p>New Style Life</p>
+            <p>Made In Japan</p>
             <p><a href="https://new-style.life/">https://new-style.life/</a></p>
         </div>
     </div>

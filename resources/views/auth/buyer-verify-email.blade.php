@@ -161,7 +161,7 @@
                                 <td style="display: block;">
                                     <h3
                                         style="font-weight: 700; font-size: 20px; margin: 0; text-transform: uppercase;">
-                                        Hi {{ $user->name }} ! Welcome To New Style Life.</h3>
+                                        Hi {{ $user->name }} ! Welcome To Made In Japan.</h3>
                                 </td>
 
                                 <td>
@@ -222,7 +222,7 @@
                                     <tr>
                                         <td>
                                             <h4 style="font-size: 19px; font-weight: 700; margin: 0;">Shop For <span
-                                                    class="theme-color">New Style Life</span></h4>
+                                                    class="theme-color">Made In Japan</span></h4>
                                         </td>
                                     </tr>
                                 </table>

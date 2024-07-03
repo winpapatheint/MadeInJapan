@@ -449,7 +449,7 @@
                                                     @elseif ($coupon->product->first())
                                                         @if ($coupon->product->first()->coupon_status == 1)
                                                             <h4 class="lh-base fw-bold offer-text"
-                                                                style="color: #417394;">Publisher : New Style Life</h4>
+                                                                style="color: #417394;">Publisher : Made In Japan</h4>
                                                         @endif
                                                     @endif
                                                     <h6 class="coupon-code">Use Code :

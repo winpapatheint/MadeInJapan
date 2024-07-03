@@ -33,7 +33,7 @@
                     <div class="log-in-box">
                         @include('components.messagebox')
                         <div class="log-in-title">
-                            <h3 style="text-wrap">Welcome to New Style Life </h3>
+                            <h3 style="text-wrap">Welcome to Made In Japan </h3>
                             <h5>Log In Your Account</h5>
                         </div>
                         @php $error = $errors->toArray(); @endphp

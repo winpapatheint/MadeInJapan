@@ -5,21 +5,21 @@
     {{-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="New Style Life">
-    <meta name="keywords" content="New Style Life">
+    <meta name="description" content="Made In Japan">
+    <meta name="keywords" content="Made In Japan">
     <link rel="icon" href="../assets/images/favicon/7.png" type="image/x-icon">
-    <title>New Style Life</title> --}}
+    <title>Made In Japan</title> --}}
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="New Style Life">
-    <meta name="keywords" content="New Style Life">
+    <meta name="description" content="Made In Japan">
+    <meta name="keywords" content="Made In Japan">
 
     <link rel="icon" href="{{ asset('frontend/assets/logos/newstyle_slogo.png') }}" type="image/x-icon">
-    <title>New Style Life</title>
+    <title>Made In Japan</title>
 
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -91,7 +91,7 @@
                             <div class="notification-slider">
                                 <div>
                                     <div class="timer-notification">
-                                        <h6><strong class="me-1">Welcome to the New Style Life EC site!</strong>
+                                        <h6><strong class="me-1">Welcome to the Made In Japan EC site!</strong>
                                         </h6>
                                     </div>
                                 </div>
@@ -159,22 +159,9 @@
                                 </div>
                                 <ul class="right-side-menu">
                                     <li class="right-side">
-                                        <div class="delivery-login-box">
-                                            <div class="delivery-icon">
-                                                <div class="search-box">
-                                                    <i data-feather="search"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="right-side">
                                         <a href="{{ url('/contact') }}" class="delivery-login-box">
                                             <div class="delivery-icon">
                                                 <i data-feather="phone-call"></i>
-                                            </div>
-                                            <div class="delivery-detail">
-                                                <h6>24/7 Delivery</h6>
-                                                <h5>+91 888 104 2340</h5>
                                             </div>
                                         </a>
                                     </li>
