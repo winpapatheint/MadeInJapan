@@ -183,7 +183,7 @@ class UserController extends Controller
         $orderDetails = OrderDetail::join('orders', 'order_details.order_id', 'orders.id')
             ->join('products', 'products.id', 'order_details.product_id')
             ->join('buyers', 'orders.buyer_id', '=', 'buyers.id')
-            ->with('prefecture')
+            ->with('country')
             ->select(
                 'orders.id as order_id',
                 'order_details.id as order_detail_id',
@@ -206,7 +206,7 @@ class UserController extends Controller
     public function showOrderDetailTracking(Request $request)
     {
         $user = DB::table('users')->where('id', Auth::user()->id)->first();
-        $orderDetail = OrderDetail::with('prefecture')->with('seller')->with('seller.country')
+        $orderDetail = OrderDetail::with('country')->with('seller')->with('seller.country')
             ->select(
                 'order_details.*',
                 'products.*',

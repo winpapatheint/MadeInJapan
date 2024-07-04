@@ -201,8 +201,8 @@
 
                                     <div class="order-details-name">
                                         <h5 class="text-content">Destination</h5>
-                                        <h4>〒{{ formatZipCode($orderDetail->cus_post_code) }} </h4>
-                                        <h4>{{ $orderDetail->prefecture->name }} </h4>
+                                        <h4>〒{{ $orderDetail->cus_post_code }} </h4>
+                                        <h4>{{ $orderDetail->country->name }} {{ $orderDetail->prefecture }} </h4>
                                         <h4>{{ $orderDetail->cus_city }} {{ $orderDetail->cus_chome }} </h4>
                                         <h4>{{ $orderDetail->cus_building }} {{ $orderDetail->cus_room }}</h4>
                                     </div>

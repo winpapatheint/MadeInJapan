@@ -90,11 +90,6 @@
                                         type="button" role="tab" style="font-size: 14px; text-align: center;" href="{{route ('user_addresses')}}"><i
                                             data-feather="map-pin"></i>Addresses</a>
                                 </li>
-                                {{-- <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-card-tab"
-                                        type="button" role="tab" style="font-size: 14px; text-align: center;" href="{{route ('user_cards')}}"><i
-                                            data-feather="credit-card"></i>Payment Methods</a>
-                                </li> --}}
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-profile-tab"
                                         type="button" role="tab" style="font-size: 14px; text-align: center;" href="{{route ('user_profile')}}"><i data-feather="user"></i>
@@ -294,23 +289,13 @@
                                                                 <li>Order Total: ¥ {{ number_format($totalAmount , 0, '.', ',') }}</li>
                                                             </ul>
     
-                                                            @php
-                                                                function formatZipCode($zipCode) {
-                                                                    if (preg_match('/^\d{3}-\d{4}$/', $zipCode)) {
-                                                                        return $zipCode;
-                                                                    }
-                                                                    if (preg_match('/^\d{7}$/', $zipCode)) {
-                                                                        return substr($zipCode, 0, 3) . '-' . substr($zipCode, 3, 4);
-                                                                    }
-                                                                    return $zipCode; // return as-is if not a standard 7 digit zip code
-                                                                }
-                                                            @endphp
                                                             <div class="payment-mode">
                                                                 <h4>Shipping address</h4>
                                                                 <ul class="order-details">
                                                                     <li><h5>{{ $order->order_details_name }}</h5></li><br>
-                                                                    <li>〒{{ formatZipCode($order->post_code) }}</li><br>
-                                                                    <li>{{ $order->prefecture->name }}</li><br>
+                                                                    <li>〒{{ $order->post_code }}</li><br>
+                                                                    <li>{{ $order->country->name }}</li><br>
+                                                                    <li>{{ $order->prefecture }}</li><br>
                                                                     <li>{{ $order->city }}</li><br>
                                                                     <li>{{ $order->chome }}</li><br>
                                                                     <li>{{ $order->building }} {{ $order->room_no }}</li><br>
