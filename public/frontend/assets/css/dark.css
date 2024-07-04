@@ -19,7 +19,7 @@
 }
 
 .theme-color-5 {
-    --theme-color: #3547B1;
+    --theme-color: #355AB1;
     --theme-color-rgb: 65, 115, 148
 }
 
@@ -12541,9 +12541,9 @@ template {
 }
 
 :root {
-    --theme-color: #3547B1;
+    --theme-color: #355AB1;
     --theme-color-rgb: 13, 164, 135;
-    --theme-color1: #3547B1;
+    --theme-color1: #355AB1;
     --theme-color1-rgb: 14, 148, 122;
     --theme-color2: linear-gradient(90.56deg, var(--theme-color1) 8.46%, var(--theme-color) 62.97%)
 }
@@ -13649,9 +13649,9 @@ template {
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     position: relative;
-    background: #3547B1;
-    background: -webkit-gradient(linear, left top, right top, from(#3547B1), to(#0e947a));
-    background: linear-gradient(90deg, #3547B1 0%, #0e947a 100%);
+    background: #355AB1;
+    background: -webkit-gradient(linear, left top, right top, from(#355AB1), to(#0e947a));
+    background: linear-gradient(90deg, #355AB1 0%, #0e947a 100%);
     border: none;
     z-index: 0
 }
@@ -13665,9 +13665,9 @@ template {
     left: 0;
     z-index: -1;
     border-radius: 5px;
-    background: #3547B1;
-    background: -webkit-gradient(linear, left top, right top, from(#0e947a), to(#3547B1));
-    background: linear-gradient(90deg, #0e947a 0%, #3547B1 100%);
+    background: #355AB1;
+    background: -webkit-gradient(linear, left top, right top, from(#0e947a), to(#355AB1));
+    background: linear-gradient(90deg, #0e947a 0%, #355AB1 100%);
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease
 }
@@ -27002,8 +27002,8 @@ header.header-gradient .top-nav .navbar-top .rightside-box .right-side-menu .rig
 }
 
 .home-search {
-    background-image: -webkit-gradient(linear, left bottom, right top, from(#3547B1), color-stop(#06a188), color-stop(#019e88), color-stop(#009a89), color-stop(#009789), color-stop(#009489), color-stop(#009089), color-stop(#008d89), color-stop(#008a89), color-stop(#008688), color-stop(#008387), to(#007f86));
-    background-image: linear-gradient(to right top, #3547B1, #06a188, #019e88, #009a89, #009789, #009489, #009089, #008d89, #008a89, #008688, #008387, #007f86);
+    background-image: -webkit-gradient(linear, left bottom, right top, from(#355AB1), color-stop(#06a188), color-stop(#019e88), color-stop(#009a89), color-stop(#009789), color-stop(#009489), color-stop(#009089), color-stop(#008d89), color-stop(#008a89), color-stop(#008688), color-stop(#008387), to(#007f86));
+    background-image: linear-gradient(to right top, #355AB1, #06a188, #019e88, #009a89, #009789, #009489, #009089, #008d89, #008a89, #008688, #008387, #007f86);
     padding-top: 0
 }
 

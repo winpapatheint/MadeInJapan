@@ -187,7 +187,7 @@
 
         .active-link {
             /* background-color: #7faec9; */
-            background: linear-gradient(-45deg, #3f525e, #3547B1, #021d2c);
+            background: linear-gradient(-45deg, #3f525e, #355AB1, #021d2c);
             /* Add any other styles you need */
         }
 

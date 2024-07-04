@@ -189,7 +189,7 @@
 
         .active-link {
             /* background-color: #7faec9; */
-            background: linear-gradient(-45deg, #3f525e, #3547B1, #021d2c);
+            background: linear-gradient(-45deg, #3f525e, #355AB1, #021d2c);
             /* Add any other styles you need */
         }
 
@@ -279,7 +279,7 @@
                                             To: {{ date('Y/m/d', strtotime($endDate)) }}</p>
                                     </li>
                                     @php
-                                        $iro = ['#3547B1', '#9e65c2', '#a927f9', '#6670bd'];
+                                        $iro = ['#355AB1', '#9e65c2', '#a927f9', '#6670bd'];
                                     @endphp
 
                                     @foreach ($notifications as $key => $notify)

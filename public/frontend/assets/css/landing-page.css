@@ -12516,9 +12516,9 @@ template {
 }
 
 :root {
-    --theme-color: #3547B1;
+    --theme-color: #355AB1;
     --theme-color-rgb: 13, 164, 135;
-    --theme-color1: #3547B1;
+    --theme-color1: #355AB1;
     --theme-color1-rgb: 14, 148, 122;
     --theme-color2: linear-gradient(90.56deg, var(--theme-color1) 8.46%, var(--theme-color) 62.97%)
 }

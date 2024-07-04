@@ -797,7 +797,7 @@
                             <div class="theme-setting-button color-picker">
                                 <form class="form-control">
                                     <label for="colorPick" class="form-label mb-0">Theme Color</label>
-                                    <input type="color" class="form-control form-control-color" id="colorPick" value="#3547B1" title="Choose your color">
+                                    <input type="color" class="form-control form-control-color" id="colorPick" value="#355AB1" title="Choose your color">
                                 </form>
                             </div>
                         </li>
@@ -851,7 +851,7 @@
                 <div class="modal-footer">
                     <form method="POST" action="{{ route('adminlogout') }}">
                         @csrf
-                        <button type="submit" class="btn btn-animation btn-md fw-bold" style="background: #3547B1; !important;">Yes</button>
+                        <button type="submit" class="btn btn-animation btn-md fw-bold" style="background: #355AB1; !important;">Yes</button>
                     </form>
                     <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-dismiss="modal" style="background: #6c757d;">No</button>
                 </div>
