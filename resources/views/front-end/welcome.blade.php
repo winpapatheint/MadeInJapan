@@ -428,14 +428,14 @@
                                                 class="bg-img blur-up lazyload" alt="">
                                             <div class="banner-details p-center p-4 text-white text-center">
                                                 <div>
-                                                    <h3 class="lh-base fw-bold offer-text" style="color: #417394;">
+                                                    <h3 class="lh-base fw-bold offer-text" style="color: var(--theme-color);">
                                                         {{ $coupon->name }}</h3>
-                                                    <h4 class="lh-base fw-bold offer-text" style="color: #417394;">
+                                                    <h4 class="lh-base fw-bold offer-text" style="color: var(--theme-color);">
                                                         Get ¥{{ number_format($coupon->discount_amount, 0, '', ',') }}
                                                         Cashback! Min Order of
                                                         ¥{{ number_format($coupon->mini_amount, 0, '', ',') }}
                                                     </h4>
-                                                    <h5 class="lh-base fw-bold offer-text" style="color: #417394;">
+                                                    <h5 class="lh-base fw-bold offer-text" style="color: var(--theme-color);">
                                                         Expired Date :
                                                         {{ date('Y/m/d', strtotime($coupon->startdate)) }} ~
                                                         {{ date('Y/m/d', strtotime($coupon->enddate)) }}
@@ -443,13 +443,13 @@
                                                     @if ($coupon->seller)
                                                         @if ($coupon->seller->coupon_status == 1)
                                                             <h4 class="lh-base fw-bold offer-text"
-                                                                style="color: #417394;">Publisher :
+                                                                style="color: var(--theme-color);">Publisher :
                                                                 {{ $coupon->seller->shop_name }}</h4>
                                                         @endif
                                                     @elseif ($coupon->product->first())
                                                         @if ($coupon->product->first()->coupon_status == 1)
                                                             <h4 class="lh-base fw-bold offer-text"
-                                                                style="color: #417394;">Publisher : Made In Japan</h4>
+                                                                style="color: var(--theme-color);">Publisher : Made In Japan</h4>
                                                         @endif
                                                     @endif
                                                     <h6 class="coupon-code">Use Code :

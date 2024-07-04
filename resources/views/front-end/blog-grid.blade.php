@@ -2124,7 +2124,7 @@
                                 <form class="form-control">
                                     <label for="colorPick" class="form-label mb-0">Theme Color</label>
                                     <input type="color" class="form-control form-control-color" id="colorPick"
-                                        value="#417394" title="Choose your color">
+                                        value="#3547B1" title="Choose your color">
                                 </form>
                             </div>
                         </li>

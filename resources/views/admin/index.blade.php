@@ -301,7 +301,7 @@
                         label: 'Sales',
                         data: data,
                         backgroundColor: 'rgba(13, 164, 135, 0.2)',
-                        borderColor: '#417394',
+                        borderColor: '#3547B1',
                         borderWidth: 1,
                         borderDash: [5, 5] // Display dashed line for each data point
                     }]
