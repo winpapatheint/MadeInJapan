@@ -94,11 +94,6 @@
                                     type="button" role="tab" style="font-size: 14px; text-align: center;" href="{{route ('user_addresses')}}"><i
                                         data-feather="map-pin"></i>Addresses</a>
                             </li>
-                            {{-- <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="pills-card-tab"
-                                    type="button" role="tab" style="font-size: 14px; text-align: center;" href="{{route ('user_cards')}}"><i
-                                        data-feather="credit-card"></i>Payment Methods</a>
-                            </li> --}}
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="pills-profile-tab"
                                     type="button" role="tab" style="font-size: 14px; text-align: center;" href="{{route ('user_profile')}}"><i data-feather="user"></i>
@@ -143,17 +138,7 @@
                                             data-bs-toggle="modal" data-bs-target="#add-address"><i data-feather="plus"
                                                 class="me-2"></i> Add New Address</button>
                                     </div>
-                                    @php
-                                        function formatZipCode($zipCode) {
-                                            if (preg_match('/^\d{3}-\d{4}$/', $zipCode)) {
-                                                return $zipCode;
-                                            }
-                                            if (preg_match('/^\d{7}$/', $zipCode)) {
-                                                return substr($zipCode, 0, 3) . '-' . substr($zipCode, 3, 4);
-                                            }
-                                            return $zipCode; // return as-is if not a standard 7 digit zip code
-                                        }
-                                    @endphp
+
                                     <div class="row g-sm-4 g-3">
                                         @foreach($data as $item)
                                         <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
@@ -181,9 +166,9 @@
                                                             <tr>
                                                                 <td>Address:</td>
                                                                 <td>
-                                                                    <p>〒{{ formatZipCode($item->post_code) }}</p>
-                                                                    <p>{{ $item->prefecture->name }}</p>
-                                                                    <p>{{ $item->city }} {{ $item->chome }}</p>
+                                                                    <p>〒{{ $item->post_code }}</p>
+                                                                    <p>{{ $item->country->name }}</p>
+                                                                    <p>{{ $item->prefecture }} {{ $item->city }} {{ $item->chome }}</p>
                                                                     <p>{{ $item->building }} {{ $item->room_no }}</p>
                                                                 </td>
                                                             </tr>
@@ -247,19 +232,25 @@
                         </div>
     
                         <div class="form-floating mb-4 theme-form-floating form-group">
+                            <select class="form-control" id="country" name="country">
+                                <option>Choose Country</option>
+                                @foreach ($country as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            <span class="error" style="color:red" id="error-country"></span>
+                        </div>
+    
+                        <div class="form-floating mb-4 theme-form-floating form-group">
                             <input type="text" class="form-control" id="post_code" name="post_code" placeholder="Post Code">
                             <label for="post_code">Post Code</label>
                             <span class="error" style="color:red" id="error-post_code"></span>
                         </div>
     
                         <div class="form-floating mb-4 theme-form-floating form-group">
-                            <select class="form-control" id="prefectures" name="prefectures">
-                                <option>Choose Prefecture</option>
-                                @foreach ($prefecture as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
-                            </select>
-                            <span class="error" style="color:red" id="error-prefectures"></span>
+                            <input type="text" class="form-control" id="prefecture" name="prefecture" placeholder="Prefecture">
+                            <label for="prefecture">Prefecture</label>
+                            <span class="error" style="color:red" id="error-prefecture"></span>
                         </div>
     
                         <div class="form-floating mb-4 theme-form-floating form-group">
@@ -359,18 +350,24 @@
                             </div>
 
                             <div class="form-floating mb-4 theme-form-floating form-group">
+                                <select class="form-control" id="country-{{ $item->id }}" name="country">
+                                    @foreach ($country as $item1)
+                                        <option value="{{ $item1->id }}" name="country" {{ $item1->id == $item->country_id ? 'selected' : '' }}>{{ $item1->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="error" style="color:red" id="error-country-{{ $item->id }}"></span>
+                            </div>
+
+                            <div class="form-floating mb-4 theme-form-floating form-group">
                                 <input type="text" class="form-control" id="post_code-{{ $item->id }}" name="post_code" placeholder="Post Code" value="{{ $item->post_code }}">
                                 <label for="post_code">Post Code</label>
                                 <span class="error" style="color:red" id="error-post_code-{{ $item->id }}"></span>
                             </div>
 
                             <div class="form-floating mb-4 theme-form-floating form-group">
-                                <select class="form-control" id="prefectures-{{ $item->id }}" name="prefectures">
-                                    @foreach ($prefecture as $item1)
-                                        <option value="{{ $item1->id }}" name="prefectures" {{ $item1->id == $item->prefecture_id ? 'selected' : '' }}>{{ $item1->name }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="error" style="color:red" id="error-prefectures-{{ $item->id }}"></span>
+                                <input type="text" class="form-control" id="prefecture-{{ $item->id }}" name="prefecture" placeholder="Prefecture" value="{{ $item->prefecture }}">
+                                <label for="prefecture">Prefecture</label>
+                                <span class="error" style="color:red" id="error-prefecture-{{ $item->id }}"></span>
                             </div>
                             
                             <div class="form-floating mb-4 theme-form-floating form-group">
@@ -485,8 +482,9 @@
         alert(addressData);
         $('#address_id').val(addressData.id);
         $('#name').val(addressData.name);
+        $('#country').val(addressData.country);
         $('#post_code').val(addressData.post_code);
-        $('#prefectures').val(addressData.prefectures);
+        $('#prefecture').val(addressData.prefecture);
         $('#city').val(addressData.city);
         $('#chome').val(addressData.chome);
         $('#building').val(addressData.building);
@@ -498,8 +496,9 @@
     $('#saveChanges').on('click', function() {
         var addressId = $('#address_id').val();
         var newName = $('#name').val();
+        var newCountry = $('#country').val();
         var newPostCode = $('#post_code').val();
-        var newPrefectures = $('#prefectures').val();
+        var newPrefecture = $('#prefecture').val();
         var newCity = $('#city').val();
         var newChome = $('#chome').val();
         var newBuilding = $('#building').val();
@@ -515,8 +514,9 @@
                 _token: '{{ csrf_token() }}',
                 id: addressId,
                 name: newName,
+                country: newCountry,
                 post_code: newPostCode,
-                prefectures: newPrefectures,
+                prefecture: newPrefecture,
                 city: newCity,
                 chome: newChome,
                 building: newBuilding,
@@ -575,8 +575,9 @@
         let isValid = true;
     
         const name = document.getElementById('name').value.trim();
+        const country = document.getElementById('country').value;
         const post_code = document.getElementById('post_code').value.trim();
-        const prefectures = document.getElementById('prefectures').value;
+        const prefecture = document.getElementById('prefecture').value.trim();
         const city = document.getElementById('city').value.trim();
         const chome = document.getElementById('chome').value.trim();
         const building = document.getElementById('building').value.trim();
@@ -595,17 +596,25 @@
             document.getElementById('error-name').textContent = 'Your name must not exceed 255 characters.';
         }
     
+        if (!country || country === 'Choose Country') {
+            isValid = false;
+            document.getElementById('error-country').textContent = 'Please select a valid country.';
+        }
+    
         if (!post_code) {
             isValid = false;
             document.getElementById('error-post_code').textContent = 'Please provide your post code.';
-        } else if (post_code.length !== 7 || !/^\d{7}$/.test(post_code)) {
+        } else if (!/^\d+$/.test(post_code)) {
             isValid = false;
             document.getElementById('error-post_code').textContent = 'Please provide a valid 7-digit post code.';
         }
     
-        if (!prefectures || prefectures === 'Choose Prefecture') {
+        if (!prefecture) {
             isValid = false;
-            document.getElementById('error-prefectures').textContent = 'Please select a valid prefecture.';
+            document.getElementById('error-prefecture').textContent = 'Please provide your prefecture.';
+        } else if (prefecture.length > 255) {
+            isValid = false;
+            document.getElementById('error-prefecture').textContent = 'Your prefecture must not exceed 255 characters.';
         }
     
         if (!city) {
@@ -652,7 +661,7 @@
             isValid = false;
             document.getElementById('error-place').textContent = 'Please select a valid place.';
         }
-    
+
         if (isValid) {
         // Show confirmation modal
             const confirmModal = new bootstrap.Modal(document.getElementById('confirmToAdd'));
@@ -670,8 +679,9 @@
         let isValid = true;
     
         const name = document.getElementById(`name-${id}`).value.trim();
+        const country = document.getElementById(`country-${id}`).value;
         const post_code = document.getElementById(`post_code-${id}`).value.trim();
-        const prefectures = document.getElementById(`prefectures-${id}`).value;
+        const prefecture = document.getElementById(`prefecture-${id}`).value.trim();
         const city = document.getElementById(`city-${id}`).value.trim();
         const chome = document.getElementById(`chome-${id}`).value.trim();
         const building = document.getElementById(`building-${id}`).value.trim();
@@ -690,17 +700,25 @@
             document.getElementById(`error-name-${id}`).textContent = 'Your name must not exceed 255 characters.';
         }
     
+        if (!country || country === 'Choose Country') {
+            isValid = false;
+            document.getElementById(`error-country-${id}`).textContent = 'Please select a valid country.';
+        }
+    
         if (!post_code) {
             isValid = false;
             document.getElementById(`error-post_code-${id}`).textContent = 'Please provide your post code.';
-        } else if (post_code.length !== 7 || !/^\d{7}$/.test(post_code)) {
+        } else if (!/^\d+$/.test(post_code)) {
             isValid = false;
             document.getElementById(`error-post_code-${id}`).textContent = 'Please provide a valid 7-digit post code.';
         }
     
-        if (!prefectures || prefectures === 'Choose Prefecture') {
+        if (!prefecture) {
             isValid = false;
-            document.getElementById(`error-prefectures-${id}`).textContent = 'Please select a valid prefecture.';
+            document.getElementById(`error-prefecture-${id}`).textContent = 'Please provide your prefecture.';
+        } else if (prefecture.length > 255) {
+            isValid = false;
+            document.getElementById(`error-prefecture-${id}`).textContent = 'Your prefecture must not exceed 255 characters.';
         }
     
         if (!city) {

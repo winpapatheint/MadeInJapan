@@ -83,20 +83,24 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="col-md-6">
-                                    <div class="form-floating theme-form-floating">
-                                        <input type="date" class="form-control" name="birthday" id="birthday" placeholder="Email Address">
-                                        <span style="color:red">@error('birthday'){{ $message }} @enderror</span>
-
-                                    </div>
-                                </div> --}}
-
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-floating theme-form-floating">
                                         <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone" value="{{ old('phone') }}">
                                         <label for="phone">Phone</label>
                                         {{-- <span style="color:red">@error('phone'){{$message}} @enderror</span> --}}
                                         <span class="error" style="color:red" id="error-phone"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating theme-form-floating">
+                                        <select class="form-control" name="country" value="{{ old('country') }}">
+                                            <option>Choose Country</option>
+                                            @foreach ($country as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="error" style="color:red" id="error-country"></span>
                                     </div>
                                 </div>
 
@@ -111,16 +115,9 @@
 
                                 <div class="col-md-6">
                                     <div class="form-floating theme-form-floating">
-                                        <select class="form-control" name="prefecture" value="{{ old('prefecture') }}">
-                                            <option>Choose Prefecture</option>
-                                            @foreach ($prefecture as $item)
-                                                <option value="{{ $item->id }}" {{ old('prefecture') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        {{-- @error('prefecture')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror --}}
-                                        <span class="error" style="color:red" id="error-prefectures"></span>
+                                        <input type="text" id="prefecture" name="prefecture" class="form-control" placeholder="Prefecture" value="{{ old('prefecture') }}">
+                                        <label>Prefecture</label>
+                                        <span class="error" style="color:red" id="error-prefecture"></span>
                                     </div>
                                 </div>
                                 
@@ -200,8 +197,9 @@
             const password = document.getElementById('password').value.trim();
             const password_confirmation = document.querySelector('input[name="password_confirmation"]').value.trim();
             const phone = document.getElementById('phone').value.trim();
+            const country = document.querySelector('select[name="country"]').value;
             const zip_code = document.querySelector('input[name="zip_code"]').value.trim();
-            const prefecture = document.querySelector('select[name="prefecture"]').value;
+            const prefecture = document.getElementById('prefecture').value.trim();
             const city = document.querySelector('input[name="city"]').value.trim();
             const chome = document.querySelector('input[name="chome"]').value.trim();
             const building = document.querySelector('input[name="building"]').value.trim();
@@ -249,18 +247,26 @@
                 isValid = false;
                 document.getElementById('error-phone').textContent = 'Please provide a valid phone number.(eg. 09077554361)';
             }
+
+            if (!country || country === 'Choose Country') {
+                isValid = false;
+                document.getElementById('error-country').textContent = 'Please select a valid country.';
+            }
     
             if (!zip_code) {
                 isValid = false;
                 document.getElementById('error-zip-code').textContent = 'Please provide your zip code.';
-            } else if (zip_code.length !== 7 || !/^\d{7}$/.test(zip_code)) {
+            } else if (zip_code.length !== 7 || !/^\d+$/.test(zip_code)) {
                 isValid = false;
                 document.getElementById('error-zip-code').textContent = 'Please provide a valid 7-digit zip code.';
             }
     
-            if (!prefecture || prefecture === 'Choose Prefecture') {
+            if (!prefecture) {
                 isValid = false;
-                document.getElementById('error-prefectures').textContent = 'Please select a valid prefecture.';
+                document.getElementById('error-prefecture').textContent = 'Please provide your prefecture.';
+            } else if (prefecture.length > 255) {
+                isValid = false;
+                document.getElementById('error-prefecture').textContent = 'Your prefecture must not exceed 255 characters.';
             }
     
             if (!city) {

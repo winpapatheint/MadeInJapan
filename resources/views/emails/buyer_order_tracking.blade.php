@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order {{ $orderItems->first()->status }}</title>
+    <title>Order {{ $orderDetails->first()->status }}</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -61,9 +61,9 @@
 </head>
 <body>
     <div class="container">
-        <h2>Order {{ $orderItems->first()->status }}</h2>
-        <p>Dear {{ $orderItems->first()->buyer->name }},</p>
-        <p>Your order has been {{ $orderItems->first()->status }} by {{ $orderItems->first()->seller->shop_name }}. 
+        <h2>Order {{ $orderDetails->first()->status }}</h2>
+        <p>Dear {{ $orderDetails->first()->buyer->name }},</p>
+        <p>Your order has been {{ $orderDetails->first()->status }} by {{ $orderDetails->first()->seller->shop_name }}. 
             Here are the details:</p>
             <table>
                 <thead>
@@ -79,7 +79,7 @@
                         $delivery_price = 0;
                         $coupon_discount = 0;
                     @endphp
-                    @foreach($orderItems as $detail)
+                    @foreach($orderDetails as $detail)
                     <tr>
                         <td>{{ $detail->product->product_name }}</td>
                         <td>{{ $detail->qty }}</td>

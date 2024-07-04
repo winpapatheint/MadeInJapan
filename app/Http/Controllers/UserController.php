@@ -10,6 +10,7 @@ use App\Models\Buyer;
 use App\Models\Order;
 use App\Models\Coupon;
 use App\Models\Seller;
+use App\Models\Country;
 use App\Models\Payment;
 use App\Models\Process;
 use App\Models\Product;
@@ -20,12 +21,12 @@ use App\Models\BuyerAddress;
 use App\Models\BuyerPayment;
 use App\Models\CouponDetail;
 use App\Models\Notification;
-use App\Models\SellerNotification;
 use Illuminate\Http\Request;
 use App\Http\Middleware\Role;
 use Illuminate\Http\Response;
 use App\Models\CashBankAccount;
 use App\Models\UserNotification;
+use App\Models\SellerNotification;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -41,8 +42,8 @@ class UserController extends Controller
     public function index()
     {
 
-        $prefecture = Prefecture::get();
-        return view('front-end.user-register', compact('prefecture'));
+        $country = Country::get();
+        return view('front-end.user-register', compact('country'));
     }
 
     //for new user registration for login
@@ -74,7 +75,8 @@ class UserController extends Controller
                 'buyer_id' => $buyer->id,
                 'name' => $request->name,
                 'post_code' => $request->zip_code,
-                'prefecture_id' => $request->prefecture,
+                'country_id' => $request->country,
+                'prefecture' => $request->prefecture,
                 'city' => $request->city,
                 'chome' => $request->chome,
                 'building' => $request->building,
@@ -262,62 +264,33 @@ class UserController extends Controller
     public function showAddresses(Request $request)
     {
         $user = DB::table('users')->where('id', Auth::user()->id)->first();
-        $prefecture = Prefecture::get();
+        $country = Country::get();
         $data = BuyerAddress::select('buyer_addresses.*', 'buyers.name as username', 'buyers.email as useremail',)
             ->join('buyers', 'buyer_addresses.buyer_id', '=', 'buyers.id')
             ->where('buyers.user_id', $user->id)
-            ->with('prefecture')->get();
+            ->with('country')->get();
 
         //$user = Buyers::first();
-        return view('front-end.user-address', compact('data', 'user', 'prefecture'));
+        return view('front-end.user-address', compact('data', 'user', 'country'));
     }
     //Add New Address
     public function createNewaddress(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'post_code' => 'required|string|max:255',
-            'prefectures' => 'required|string|max:255|not_in:Choose Prefecture',
-            'city' => 'required|string|max:255',
-            'chome' => 'required|string|max:255',
-            'building' => 'required|string|max:255',
-            'roomno' => 'required|string|max:255',
-            'place' => 'required|in:Home,Office,Other',
-            'phone' => 'required|string|max:255',
-        ], [
-            'name.required' => 'Please provide your name.',
-            'name.max' => 'Your name must not be exceed 255 characters.',
-            'post_code.required' => 'Please provide your post_code.',
-            'post_code.max' => 'Your post_code must not be exceed 255 characters.',
-            'prefectures.required' => 'Please provide your prefecture.',
-            'prefectures.max' => 'Your prefecture must not be exceed 255 characters.',
-            'prefectures.not_in' => 'Please select a valid prefecture.',
-            'city.required' => 'Please provide your city.',
-            'city.max' => 'Your city must not be exceed 255 characters.',
-            'chome.required' => 'Please provide your chome.',
-            'chome.max' => 'Your chome must not be exceed 255 characters.',
-            'building.required' => 'Please provide your building.',
-            'building.max' => 'Your building must not be exceed 255 characters.',
-            'roomno.required' => 'Please provide your roomno.',
-            'roomno.max' => 'Your roomno must not be exceed 255 characters.',
-            'place.in' => 'Please select a valid place.',
-            'phone.required' => 'Please provide your phone number.',
-            'phone.min' => 'The phone number must not be exceed 255 characters.',
-        ]);
         $user = DB::table('users')->where('id', Auth::user()->id)->first();
         $buyer = Buyer::where('user_id', Auth::user()->id)->first();
-        $prefecture = Prefecture::get();
-        $data = BuyerAddress::select('buyer_addresses.id', 'buyer_addresses.name', 'buyer_addresses.post_code', 'buyer_addresses.city', 'buyer_addresses.chome', 'buyer_addresses.building', 'buyer_addresses.room_no', 'buyer_addresses.prefecture_id', 'buyer_addresses.phone', 'buyer_addresses.place', 'buyers.id as userid', 'buyers.name as username', 'buyers.email as useremail',)
+        $country = Country::get();
+        $data = BuyerAddress::select('buyer_addresses.id', 'buyer_addresses.name', 'buyer_addresses.post_code', 'buyer_addresses.city', 'buyer_addresses.chome', 'buyer_addresses.building', 'buyer_addresses.room_no', 'buyer_addresses.prefecture', 'buyer_addresses.country_id', 'buyer_addresses.phone', 'buyer_addresses.place', 'buyers.id as userid', 'buyers.name as username', 'buyers.email as useremail',)
             ->join('buyers', 'buyer_addresses.buyer_id', '=', 'buyers.id')
             ->get();
 
-        if ($request->filled('name', 'post_code', 'city', 'chome', 'building', 'roomno', 'place', 'phone')) {
+        if ($request->filled('name', 'country', 'post_code', 'prefecture', 'city', 'chome', 'building', 'roomno', 'place', 'phone')) {
 
             $Buyer_addresses = BuyerAddress::create([
                 'buyer_id' => $buyer->id,
                 'name' => $request->name,
+                'country_id' => $request->country,
                 'post_code' => $request->post_code,
-                'prefecture_id' => $request->prefectures,
+                'prefecture' => $request->prefecture,
                 'city' => $request->city,
                 'chome' => $request->chome,
                 'building' => $request->building,
@@ -329,7 +302,7 @@ class UserController extends Controller
             ]);
 
             if ($Buyer_addresses) {
-                return redirect()->route('user_addresses', compact('data', 'user', 'prefecture'));
+                return redirect()->route('user_addresses', compact('data', 'user', 'country'));
             } else {
                 // Handle failure to save
                 return back()->withInput()->withErrors(['error' => 'Failed to save address.']);
@@ -345,19 +318,20 @@ class UserController extends Controller
     {
         $user = DB::table('users')->where('id', Auth::user()->id)->first();
         $buyer = Buyer::where('user_id', Auth::user()->id)->first();
-        $prefecture = Prefecture::get();
+        $country = Country::get();
 
         $buyerAddress = BuyerAddress::find($request->id);
 
         $data = BuyerAddress::select(
             'buyer_addresses.id',
             'buyer_addresses.name',
+            'buyer_addresses.country_id',
             'buyer_addresses.post_code',
             'buyer_addresses.city',
             'buyer_addresses.chome',
             'buyer_addresses.building',
             'buyer_addresses.room_no',
-            'buyer_addresses.prefecture_id',
+            'buyer_addresses.prefecture',
             'buyer_addresses.phone',
             'buyer_addresses.place',
             'buyers.id as userid',
@@ -372,8 +346,9 @@ class UserController extends Controller
             $buyerAddress->update([
                 'buyer_id' => $buyer->id,
                 'name' => $request->name,
+                'country_id' => $request->country,
                 'post_code' => $request->post_code,
-                'prefecture_id' => $request->prefectures,
+                'prefecture' => $request->prefecture,
                 'city' => $request->city,
                 'chome' => $request->chome,
                 'building' => $request->building,
@@ -381,7 +356,7 @@ class UserController extends Controller
                 'place' => $request->place,
                 'phone' => $request->phone,
             ]);
-            return redirect()->route('user_addresses', compact('data', 'user', 'prefecture'));
+            return redirect()->route('user_addresses', compact('data', 'user', 'country'));
         } else {
             // Return an error response
             return response()->json(['error' => 'Address not found'], 404);
@@ -402,16 +377,6 @@ class UserController extends Controller
     //Show Payment Method
     public function showCard(Request $request)
     {
-        // Retrieve the encrypted account number from the database
-        //$encryptedAccountNumber = $model->account_number; // Assuming $model contains the database record
-
-        // Decrypt the account number
-        //$decryptedAccountNumber = Crypt::decryptString($encryptedAccountNumber);
-
-        // Extract the last four digits
-        //$lastFourDigits = substr($decryptedAccountNumber, -4);
-
-        // Use $lastFourDigits as needed
         $user = DB::table('users')->where('id', Auth::user()->id)->first();
         $data = BuyerPayment::select('buyer_payments.*', 'buyers.id as userid', 'buyers.name as username', 'buyers.email as useremail')
             ->join('buyers', 'buyer_payments.buyer_id', '=', 'buyers.id')
@@ -501,9 +466,9 @@ class UserController extends Controller
             ->first();
         $buyerAddress = BuyerAddress::where('buyer_id', $buyer->id)->where('main_address', 1)->first();
         $maskedPassword = str_repeat('*', strlen($user->password));
-        $prefecture = Prefecture::get();
+        $country = Country::get();
         if ($user && $buyer) {
-            return view('front-end.user-profile', compact('user', 'buyer', 'buyerAddress', 'maskedPassword', 'prefecture'));
+            return view('front-end.user-profile', compact('user', 'buyer', 'buyerAddress', 'maskedPassword', 'country'));
         } else {
             return redirect()->route('login');
         }
@@ -529,8 +494,9 @@ class UserController extends Controller
             $buyerAddress->update([
                 'name' => $request->name,
                 'phone' => $request->phone,
+                'country_id' => $request->country,
                 'post_code' => $request->post_code,
-                'prefecture_id' => $request->prefectures,
+                'prefecture' => $request->prefectures,
                 'city' => $request->city,
                 'chome' => $request->chome,
                 'building' => $request->building,
@@ -892,7 +858,7 @@ class UserController extends Controller
         $buyerAddress = BuyerAddress::select('buyer_addresses.*', 'buyers.name as username', 'buyers.email as useremail',)
             ->join('buyers', 'buyer_addresses.buyer_id', '=', 'buyers.id')
             ->where('buyers.user_id', Auth::user()->id)
-            ->with('prefecture')->get();
+            ->with('country')->get();
 
         $buyerPayment = BuyerPayment::select('buyer_payments.id', 'buyer_payments.acc_name', 'buyer_payments.acc_no', 'buyer_payments.card_type', 'buyer_payments.expired_date', 'buyer_payments.security_code', 'buyer_payments.img', 'buyers.id as userid', 'buyers.name as username', 'buyers.email as useremail')
             ->join('buyers', 'buyer_payments.buyer_id', '=', 'buyers.id')
@@ -962,7 +928,8 @@ class UserController extends Controller
             $buyerAddressFirst = BuyerAddress::find($buyerAddressId);
             $name = $buyerAddressFirst->name;
             $phone = $buyerAddressFirst->phone;
-            $prefectureId = $buyerAddressFirst->prefecture_id;
+            $countryId = $buyerAddressFirst->country_id;
+            $prefecture = $buyerAddressFirst->prefecture;
             $postcode = $buyerAddressFirst->post_code;
             $city = $buyerAddressFirst->city;
             $chome = $buyerAddressFirst->chome;
@@ -976,12 +943,6 @@ class UserController extends Controller
             $couponId = $request->couponId;
 
             $paymentApproved = ($payment === 'Cash') ? 0 : 1;
-
-            // return response()->json(['message' => $postcode.",".$city.",".$chome.",".$building.",".$room]);
-
-
-            // Generate a unique order code
-            //$id = IdGenerator::generate(['table' => 'orders', 'length' => 10, 'prefix' => date('yd')]);
 
             $datePrefix = date('ym');
             $latestOrder = Order::where('order_code', 'like', $datePrefix . '%')->latest()->first();
@@ -1056,7 +1017,8 @@ class UserController extends Controller
                     'buyer_id' => (int)$buyerId,
                     'seller_id' => $sellerId[$key],
                     'product_id' => (int)$product_id,
-                    'prefecture_id' => $prefectureId,
+                    'country_id' => $countryId,
+                    'prefecture' => $prefecture,
                     'color' => $cart->color,
                     'size' => $cart->size,
                     'qty' => $quantities[$key],
@@ -1161,7 +1123,8 @@ class UserController extends Controller
             $buyerAddressFirst = BuyerAddress::find($buyerAddressId);
             $name = $buyerAddressFirst->name;
             $phone = $buyerAddressFirst->phone;
-            $prefectureId = $buyerAddressFirst->prefecture_id;
+            $countryId = $buyerAddressFirst->country_id;
+            $prefecture = $buyerAddressFirst->prefecture;
             $postcode = $buyerAddressFirst->post_code;
             $city = $buyerAddressFirst->city;
             $chome = $buyerAddressFirst->chome;
@@ -1259,7 +1222,8 @@ class UserController extends Controller
                     'buyer_id' => (int)$buyerId,
                     'seller_id' => $sellerId[$key],
                     'product_id' => (int)$product_id,
-                    'prefecture_id' => $prefectureId,
+                    'country_id' => $countryId,
+                    'prefecture' => $prefecture,
                     'color' => $cart->color,
                     'size' => $cart->size,
                     'qty' => $quantities[$key],
@@ -1323,7 +1287,7 @@ class UserController extends Controller
 
     public function orderSuccess($id)
     {
-        $order = Order::with('orderDetail')->with('orderDetail.buyer')->with('orderDetail.seller')->with('orderDetail.prefecture')
+        $order = Order::with('orderDetail')->with('orderDetail.buyer')->with('orderDetail.seller')->with('orderDetail.country')
             ->with('orderDetail.product')
             ->where('id', $id)->first();
         return view('front-end.order-success', compact('order'));

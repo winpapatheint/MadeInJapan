@@ -3299,7 +3299,7 @@ class AdminController extends Controller
 
         $orderDetails = OrderDetail::join('orders', 'order_details.order_id', 'orders.id')
             ->join('products', 'products.id', 'order_details.product_id')
-            ->with('prefecture')
+            ->with('country')
             ->select(
                 'orders.id as order_id',
                 'order_details.id as order_detail_id',
@@ -3319,7 +3319,7 @@ class AdminController extends Controller
 
     public function ordertracking($id)
     {
-        $orderDetail = OrderDetail::with('prefecture')->with('seller')
+        $orderDetail = OrderDetail::with('country')->with('seller')
             ->select(
                 'order_details.*',
                 'products.*',

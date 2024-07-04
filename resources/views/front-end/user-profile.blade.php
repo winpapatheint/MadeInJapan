@@ -264,17 +264,23 @@
                         </div>
     
                         <div class="form-floating mb-4 theme-form-floating form-group">
+                            <select class="form-control" id="country" name="country">
+                                @foreach ($country as $item1)
+                                    <option value="{{ $item1->id }}" {{ $item1->id == $buyerAddress->country_id ? 'selected' : '' }}>{{ $item1->name }}</option>
+                                @endforeach
+                            </select>
+                            <span class="error" style="color:red" id="error-country"></span>
+                        </div>
+    
+                        <div class="form-floating mb-4 theme-form-floating form-group">
                             <input type="text" class="form-control" id="post_code" name="post_code" placeholder="Post Code" value="{{ $buyerAddress->post_code }}">
                             <label for="post_code">Post Code</label>
                             <span class="error" style="color:red" id="error-post_code"></span>
                         </div>
     
                         <div class="form-floating mb-4 theme-form-floating form-group">
-                            <select class="form-control" id="prefectures" name="prefectures">
-                                @foreach ($prefecture as $item1)
-                                    <option value="{{ $item1->id }}" {{ $item1->id == $buyerAddress->prefecture_id ? 'selected' : '' }}>{{ $item1->name }}</option>
-                                @endforeach
-                            </select>
+                            <input type="text" class="form-control" id="prefectures" name="prefectures" placeholder="Prefectures" value="{{ $buyerAddress->prefecture }}">
+                            <label for="prefectures">Prefectures</label>
                             <span class="error" style="color:red" id="error-prefectures"></span>
                         </div>
                         
@@ -435,8 +441,9 @@
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
         const phone = document.getElementById('phone').value.trim();
+        const country = document.getElementById('country').value;
         const post_code = document.getElementById('post_code').value.trim();
-        const prefectures = document.getElementById('prefectures').value;
+        const prefectures = document.getElementById('prefectures').value.trim();
         const city = document.getElementById('city').value.trim();
         const chome = document.getElementById('chome').value.trim();
         const building = document.getElementById('building').value.trim();
@@ -470,17 +477,25 @@
             document.getElementById('error-phone').textContent = 'The phone number must not exceed 255 characters.';
         }
     
+        if (!country) {
+            isValid = false;
+            document.getElementById('error-country').textContent = 'Please select a country.';
+        }
+    
         if (!post_code) {
             isValid = false;
             document.getElementById('error-post_code').textContent = 'Please provide your post code.';
-        } else if (post_code.length !== 7 || !/^\d{7}$/.test(post_code)) {
+        } else if (!/^\d+$/.test(post_code)) {
             isValid = false;
             document.getElementById('error-post_code').textContent = 'Please provide a valid 7-digit post code.';
         }
     
         if (!prefectures) {
             isValid = false;
-            document.getElementById('error-prefectures').textContent = 'Please select a prefecture.';
+            document.getElementById('error-prefectures').textContent = 'Please provide your prefecture.';
+        } else if (prefectures.length > 255) {
+            isValid = false;
+            document.getElementById('error-prefectures').textContent = 'The prefectures must not exceed 255 characters.';
         }
     
         if (!city) {

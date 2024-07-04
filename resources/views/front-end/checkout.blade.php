@@ -69,8 +69,8 @@
 
                                                                 <li>
                                                                     <p class="text-content">{{ $buyeraddress->post_code }}</p>
-                                                                    <p class="text-content">{{ $buyeraddress->prefecture->name }}</p>
-                                                                    <p class="text-content">{{ $buyeraddress->city }} {{ $buyeraddress->chome }}</p>
+                                                                    <p class="text-content">{{ $buyeraddress->country->name }}</p>
+                                                                    <p class="text-content">{{ $buyeraddress->prefecture }} {{ $buyeraddress->city }} {{ $buyeraddress->chome }}</p>
                                                                     <p class="text-content">{{ $buyeraddress->building }} {{ $buyeraddress->room_no }}</p>
 
                                                                 </li>

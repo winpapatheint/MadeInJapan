@@ -12,7 +12,8 @@ class BuyerAddress extends Model
         'buyer_id',
         'name',
         'post_code',
-        'prefecture_id',
+        'country_id',
+        'prefecture',
         'city',
         'chome',
         'building',
@@ -25,7 +26,7 @@ class BuyerAddress extends Model
         'updated_at',
     ];
 
-    function prefecture() {
-        return $this->belongsTo(Prefecture::class);
+    function country() {
+        return $this->belongsTo(Country::class);
     }
 }

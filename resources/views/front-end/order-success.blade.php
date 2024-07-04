@@ -161,13 +161,6 @@
                             <tr>
                                 <td>
                                     <div class="title title-2 text-center">
-                                        {{-- <h2 style="font-size: 20px;font-weight: 700;margin: 24px 0 0;">Thanks For your
-                                            Order
-                                        </h2> --}}
-                                        {{-- <p
-                                            style="font-size: 14px;margin: 5px auto 0;line-height: 1.5;color: #939393;font-weight: 500;width: 70%;">
-                                            You'll receive an email when your items are shipped. if you have any
-                                            questions, Call Us (+81) 03-3981-5090.</p> --}}
                                             <div class="container-fluid-lg">
                                                 <ul class="navbar-nav">
                                                     <li class="nav-item dropdown">
@@ -206,17 +199,6 @@
                         </tbody>
                     </table>
 
-                    @php
-                        function formatZipCode($zipCode) {
-                            if (preg_match('/^\d{3}-\d{4}$/', $zipCode)) {
-                                return $zipCode;
-                            }
-                            if (preg_match('/^\d{7}$/', $zipCode)) {
-                                return substr($zipCode, 0, 3) . '-' . substr($zipCode, 3, 4);
-                            }
-                            return $zipCode; // return as-is if not a standard 7 digit zip code
-                        }
-                    @endphp
                     <table class="dilivery-table" align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
                         style="margin: 25px 27px;padding: 20px 32px;width: fit-content; background-color:
                         #f7f7f7;">
@@ -227,8 +209,8 @@
                                         <h2 style="font-size: 16px;font-weight: 700;margin: 0 0 12px;">We will deliver your order</h2>
                                         <p
                                             style="font-size: 14px;margin: 0;line-height: 1.5;color: #939393;font-weight: 500;">
-                                            〒{{ formatZipCode($order->orderDetail->first()->post_code) }} <br>
-                                            {{ $order->orderDetail->first()->prefecture->name }} {{ $order->orderDetail->first()->city }} 
+                                            〒{{ $order->orderDetail->first()->post_code }} <br>
+                                            {{ $order->orderDetail->first()->country->name }} {{ $order->orderDetail->first()->prefecture }} {{ $order->orderDetail->first()->city }} 
                                             {{ $order->orderDetail->first()->chome }} <br>
                                             {{ $order->orderDetail->first()->building }} {{ $order->orderDetail->first()->room_no }} <br>    
                                         </p>

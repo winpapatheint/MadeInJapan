@@ -13,7 +13,8 @@ class OrderDetail extends Model
         'buyer_id',
         'seller_id',
         'product_id',
-        'prefecture_id',
+        'country_id',
+        'prefecture',
         'color',
         'size',
         'qty',
@@ -63,9 +64,9 @@ class OrderDetail extends Model
         return $this->belongsTo(Buyer::class,'buyer_id');
     }
 
-    public function prefecture()
+    public function country()
     {
-        return $this->belongsTo(Prefecture::class, 'prefecture_id');
+        return $this->belongsTo(Country::class, 'country_id');
     }
 
     function seller() {

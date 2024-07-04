@@ -150,7 +150,7 @@
                                                 <ul class="order-details">
                                                     <li>Name: {{ $order->buyer->name }}</li>
                                                     <li>Post Code: 〒{{ $order->post_code }}</li>
-                                                    <li>Address: {{ $order->prefecture->name }}, {{ $order->city }}</li>
+                                                    <li>Address: {{ $order->country->name }} {{ $order->prefecture }}, {{ $order->city }}</li>
                                                     <li>{{ $order->chome }}, {{ $order->building }} {{ $order->room_no }}</li>
                                                     <li>{{ $order->order_details_phone }}</li>
                                                 </ul>

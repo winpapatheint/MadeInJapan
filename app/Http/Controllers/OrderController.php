@@ -80,7 +80,7 @@ class OrderController extends Controller
         $sellerId = Auth::user()->created_by ?? Auth::id();
         $orderDetails = OrderDetail::join('orders', 'order_details.order_id', 'orders.id')
                 ->join('products', 'products.id', 'order_details.product_id')
-                ->with('prefecture')
+                ->with('country')
                 ->select(
                     'orders.id as order_id',
                     'order_details.id as order_detail_id',
