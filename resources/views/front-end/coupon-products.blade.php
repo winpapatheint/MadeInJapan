@@ -59,7 +59,7 @@
                                         style="font-size: 15px; padding: 0.25rem 0.5rem; border-radius: 5px 0 0 5px;">
                                         <button class="btn btn-outline-success btn-sm my-2 my-sm-0" type="submit" id="searchBtn"
                                         style="font-size: 15px; padding: 0.25rem 0.5rem; background-color: var(--theme-color); border-radius: 0 5px 5px 0;">
-                                        <i data-feather="search"></i></button>
+                                        <i data-feather="search" style="stroke: white;"></i></button>
                                     </div>
                                 </div>
 
