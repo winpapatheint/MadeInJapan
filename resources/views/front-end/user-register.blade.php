@@ -256,7 +256,7 @@
             if (!zip_code) {
                 isValid = false;
                 document.getElementById('error-zip-code').textContent = 'Please provide your zip code.';
-            } else if (zip_code.length !== 7 || !/^\d+$/.test(zip_code)) {
+            } else if (!/^\d+$/.test(zip_code)) {
                 isValid = false;
                 document.getElementById('error-zip-code').textContent = 'Please provide a valid 7-digit zip code.';
             }

@@ -376,7 +376,6 @@
                                             @if (!empty(Auth::user()))
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link" href="{{ url('/user') }}">My Menu</a>
-
                                             </li>
                                             @endif
 
@@ -391,7 +390,8 @@
 
                                             @if ($specialCorner->isNotEmpty())
                                             <li class="nav-item dropdown dropdown-mega">
-                                                <a class="nav-link menu dropdown-toggle ps-xl-2 ps-0" href="javascript:void(0)" data-bs-toggle="dropdown">
+                                                <a class="nav-link menu dropdown-toggle ps-xl-2 ps-0" 
+                                                href="javascript:void(0)" data-bs-toggle="dropdown">
                                                     <span class="menu">Special Corner</span>
                                                 </a>
 
