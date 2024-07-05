@@ -9,7 +9,7 @@
     <meta name="keywords" content="admin template, Made In Japan admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{ asset('frontend/assets/logos/newstyle_slogo.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('frontend/assets/logos/mij_slogo.png') }}" type="image/x-icon">
     <title>Made In Japan</title>
 
     <!-- Google font -->
@@ -215,14 +215,14 @@
                 <div class="header-logo-wrapper p-0">
                     <div class="logo-wrapper">
                         <a href="{{ route('admin.dashboard') }}">
-                            <img class="img-fluid main-logo" src="{{ asset('backend/assets/images/logo/nsl-logo.png') }}" alt="logo">
-                            <img class="img-fluid white-logo" src="{{ asset('backend/assets/images/logo/nsl-logo.png') }}" alt="logo">
+                            <img class="img-fluid main-logo" src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" alt="logo">
+                            <img class="img-fluid white-logo" src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" alt="logo">
                         </a>
                     </div>
                     <div class="toggle-sidebar">
                         <i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
                         <a href="{{ route('admin.dashboard') }}">
-                            <img src="{{ asset('backend/assets/images/logo/nsl-logo.png') }}" class="img-fluid" alt="">
+                            <img src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" class="img-fluid" alt="">
                         </a>
                     </div>
                 </div>
@@ -416,7 +416,7 @@
                 <div>
                     <div class="logo-wrapper logo-wrapper-center">
                         <a href="{{ route('admin.dashboard') }}" data-bs-original-title="" title="">
-                            <img class="img-fluid for-white" src="{{ asset('backend/assets/images/logo/nsl-logo.png') }}" alt="logo">
+                            <img class="img-fluid for-white" src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" alt="logo">
                         </a>
                         <div class="back-btn">
                             <i class="fa fa-angle-left"></i>
@@ -427,7 +427,7 @@
                     </div>
                     <div class="logo-icon-wrapper">
                         <a href="{{ route('admin.dashboard') }}">
-                            <img class="img-fluid main-logo main-white" src="{{ asset('backend/assets/images/logo/nsl-logo.png') }}" alt="logo">
+                            <img class="img-fluid main-logo main-white" src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" alt="logo">
                             <img class="img-fluid main-logo main-dark" src="{{ asset('backend/assets/images/logo/logo-white.png') }}" alt="logo">
                         </a>
                     </div>

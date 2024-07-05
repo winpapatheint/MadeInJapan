@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{{ asset('frontend/assets/logos/newstyle_slogo.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('frontend/assets/logos/mij_slogo.png') }}" type="image/x-icon">
     <title>Made In Japan</title>
 
     <!-- Google Font css -->
@@ -140,7 +140,7 @@
                             style="background-color: #f7f7f7;display: flex;align-items: center;justify-content: center;width: 100%;">
                             <td class="header-logo" style="padding: 10px 32px;">
                                 <a href="/" style="display: block; text-align: left;">
-                                    <img src="{{ asset('backend/assets/images/logo/nsl-logo.png') }}" class="main-logo" alt="logo">
+                                    <img src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" class="main-logo" alt="logo">
                                 </a>
                             </td>
                         </tr>

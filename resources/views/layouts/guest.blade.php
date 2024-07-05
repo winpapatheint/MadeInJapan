@@ -18,7 +18,7 @@
     <meta name="description" content="Made In Japan">
     <meta name="keywords" content="Made In Japan">
 
-    <link rel="icon" href="{{ asset('frontend/assets/logos/newstyle_slogo.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('frontend/assets/logos/mij_slogo.png') }}" type="image/x-icon">
     <title>Made In Japan</title>
 
     <!-- Google font -->
@@ -129,9 +129,9 @@
                                 </span>
                             </button>
                             <a href="/" class="web-logo nav-logo">
-                                <img src="{{ asset('images/logos/newstyle_logo.png') }}" class="img-fluid blur-up lazyload" alt="">
-                            </a>
-
+                                <img src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" class="img-fluid blur-up lazyload" alt="">
+                            </a>{{-- images/logos/mij_blogo.jpg --}}
+                            
                             <div class="middle-box">
                                 <div class="search-box">
                                     <form id="mainSearchForm" action="{{ route('show-product') }}" method="GET">

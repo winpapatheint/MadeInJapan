@@ -124,7 +124,7 @@
                             style="background-color: #f7f7f7;display: flex;align-items: center;justify-content: space-between;width: 100%;">
                             <td class="header-logo" style="padding: 10px 32px;">
                                 <a href="{{ url('/') }}" style="display: block; text-align: left;">
-                                    <img src="{{ asset('backend/assets/images/logo/nsl-logo.png') }}" class="main-logo" alt="logo">
+                                    <img src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" class="main-logo" alt="logo">
                                 </a>
                             </td>
                             <td class="header-menu" style="display: block; padding: 10px 32px;text-align: right;">
