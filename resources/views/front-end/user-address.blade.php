@@ -232,7 +232,7 @@
                         </div>
     
                         <div class="form-floating mb-4 theme-form-floating form-group">
-                            <select class="form-control" id="country" name="country">
+                            <select class="form-control" id="country" name="country" style="color: #4A5567; font-size: 0.975rem;">
                                 <option>Choose Country</option>
                                 @foreach ($country as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -284,7 +284,7 @@
                         </div>
     
                         <div class="form-floating mb-4 theme-form-floating form-group">
-                            <select class="form-control" id="place" name="place">
+                            <select class="form-control" id="place" name="place" style="color: #4A5567; font-size: 0.975rem;">
                                 <option>Choose Place</option>
                                 <option value="Home">Home</option>
                                 <option value="Office">Office</option>

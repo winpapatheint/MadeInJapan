@@ -94,7 +94,7 @@
 
                                 <div class="col-md-6">
                                     <div class="form-floating theme-form-floating">
-                                        <select class="form-control" name="country" value="{{ old('country') }}">
+                                        <select class="form-control" name="country" value="{{ old('country') }}" style="color: #4A5567; font-size: 0.975rem;">
                                             <option>Choose Country</option>
                                             @foreach ($country as $item)
                                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
