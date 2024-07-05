@@ -58,7 +58,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="{{ $message->embed(public_path('images/logos/MailHeader_NSL.jpg')) }}" alt="Made In Japan Logo">
+            <img src="{{ $message->embed(public_path('images/logos/MailHeader_MIJ.png')) }}" alt="Made In Japan Logo">
         </div>
         <div class="content">
             @if ($user->role == 'buyer')
