@@ -183,7 +183,7 @@
                                                                     </td>
                                                                     <td>
                                                                         <a href="{{ route('show-product-left-thumbnail', ['id' => $order->product_id]) }}">
-                                                                            <h5 style="width: 100px;">{{ $order->product_name }}</h5>
+                                                                            <h5 style="width: 100px;">{{ mb_substr($order->product_name, 0, 20) . '...' }}</h5>
                                                                         </a>
                                                                     </td>
                                                                     @php
@@ -206,12 +206,12 @@
                                                                     </td>
                                                                     <td>
                                                                         @if ($order->payment_approved == 1)
-                                                                            @if ($order->status != "Cancel" || $order->status != "Cash Cancel")
+                                                                            @if ($order->status != "Cancel" && $order->status != "Cash Cancel")
                                                                             <a type="button" class="btn btn-sm" style="background-color: var(--theme-color); border:0.5px solid var(--theme-color); margin-left:0.5em; color:white;"
                                                                                 href="{{route ('order_detail_tracking',['id' => $order->order_detail_id]) }}">Tracking</a>
                                                                             @else
                                                                             <button type="button" class="btn btn-sm" style="background-color: #ff6b6b; border:0.5px solid var(--theme-color); margin-left:0.5em; color:white;"
-                                                                                onclick="cancelReason({{ $order->order_detail_id }})">Canceled</button>
+                                                                                onclick="cancelReason({{ $order->order_detail_id }})">Cancelled</button>
                                                                             @endif
                                                                         @endif
                                                                     </td>
