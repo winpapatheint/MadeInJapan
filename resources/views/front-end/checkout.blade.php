@@ -313,7 +313,7 @@
     </section>
     <!-- Checkout section End -->
 
-    <script src="https://www.paypal.com/sdk/js?client-id=Afa37Sd8KhndPxu857AGrWKc44766o1oiHViAxUlSl9ZFiryUEY7mwcsslzuv-OARUnMSJBSS15ZVoGg&currency=JPY"> // Replace YOUR_CLIENT_ID with your sandbox client ID
+    <script src="https://www.paypal.com/sdk/js?client-id=AR2lokFqBXcd_mRdoa5LKYA9LwdB5xCN3pc8u15_Ff5fdsv3aitLYTn8mKQz-ZJ4ySHNOKSxT2jNPiad&currency=JPY"> // Replace YOUR_CLIENT_ID with your sandbox client ID
     </script>
     <script>
         var Newbuyeraddressid = <?php echo json_encode($buyerAddressIdFirst ); ?>; 
