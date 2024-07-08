@@ -137,7 +137,7 @@
                                     <form id="mainSearchForm" action="{{ route('show-product') }}" method="GET">
                                         <div class="input-group">
                                             <input type="search" class="form-control" name="mainSearch" placeholder="I'm searching for..." value="{{ request('mainSearch') }}">
-                                            <button type="submit" style="background-color: var(--theme-color); border-color: var(--theme-color);">
+                                            <button class="btn" type="submit" style="background-color: var(--theme-color); border-color: var(--theme-color);">
                                                 <i data-feather="search"></i>
                                             </button>
                                         </div>
@@ -158,7 +158,7 @@
                                     </div>
                                 </div>
                                 <ul class="right-side-menu">
-                                    <li class="right-side">
+                                    <li class="right-side" style="display: block;">
                                         <a href="{{ url('/contact') }}" class="delivery-login-box">
                                             <div class="delivery-icon">
                                                 <i data-feather="phone-call"></i>
