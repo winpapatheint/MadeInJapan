@@ -49,7 +49,6 @@
                                     <div class="form-floating theme-form-floating">
                                         <input type="text" class="form-control" name="name" id="fullname" placeholder="Type your name" value="{{ old('name') }}">
                                         <label for="fullname">Name</label>
-                                        {{-- <span style="color:red">@error('name'){{$message}} @enderror</span> --}}
                                         <span class="error" style="color:red" id="error-name"></span>
                                     </div>
                                 </div>
@@ -69,7 +68,6 @@
                                     <div class="form-floating theme-form-floating">
                                         <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="{{ old('password') }}">
                                         <label for="password">Password</label>
-                                        {{-- <span style="color:red">@error('password'){{$message}} @enderror</span> --}}
                                         <span class="error" style="color:red" id="error-password"></span>
                                     </div>
                                 </div>
@@ -78,7 +76,6 @@
                                     <div class="form-floating theme-form-floating">
                                         <input type="password" name="password_confirmation" class="form-control" placeholder="Password">
                                         <label for="password">Confirmed Password</label>
-                                        {{-- <span style="color:red">@error('password'){{$message}} @enderror</span> --}}
                                         <span class="error" style="color:red" id="error-confirmed-password"></span>
                                     </div>
                                 </div>
@@ -87,7 +84,6 @@
                                     <div class="form-floating theme-form-floating">
                                         <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone" value="{{ old('phone') }}">
                                         <label for="phone">Phone</label>
-                                        {{-- <span style="color:red">@error('phone'){{$message}} @enderror</span> --}}
                                         <span class="error" style="color:red" id="error-phone"></span>
                                     </div>
                                 </div>
@@ -106,9 +102,8 @@
 
                                 <div class="col-md-6">
                                     <div class="form-floating theme-form-floating">
-                                        <input type="text" name="zip_code" class="form-control" placeholder="Zip Code" max="7" value="{{ old('zip_code') }}">
+                                        <input type="number" id="zip_code" name="zip_code" class="form-control" placeholder="Zip Code" value="{{ old('zip_code') }}" pattern="\d*">
                                         <label>Zip Code</label>
-                                        {{-- <span style="color:red">@error('zip_code'){{ $message }}@enderror</span> --}}
                                         <span class="error" style="color:red" id="error-zip-code"></span>
                                     </div>
                                 </div>
@@ -125,7 +120,6 @@
                                     <div class="form-floating theme-form-floating">
                                         <input type="text" name="city" class="form-control" placeholder="Narita-shi,Furugome" value="{{ old('city') }}">
                                         <label>City, Ward, Town</label>
-                                        {{-- <span style="color:red">@error('city'){{ $message }}@enderror</span> --}}
                                         <span class="error" style="color:red" id="error-city"></span>
                                     </div>
                                 </div>
@@ -134,7 +128,6 @@
                                     <div class="form-floating theme-form-floating">
                                         <input type="text" name="chome" class="form-control" placeholder="1-2-3" value="{{ old('chome') }}">
                                         <label>Chome, Banchi, Go</label>
-                                        {{-- <span style="color:red">@error('chome'){{ $message }}@enderror</span> --}}
                                         <span class="error" style="color:red" id="error-chome"></span>
                                     </div>
                                 </div>
@@ -143,9 +136,6 @@
                                     <div class="form-floating theme-form-floating">
                                         <input type="text" name="building" class="form-control" placeholder="Example Building" value="{{ old('building') }}">
                                         <label>Building / Apt / Company name</label>
-                                        {{-- @error('building')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror --}}
                                         <span class="error" style="color:red" id="error-building"></span>
                                     </div>
                                 </div>
@@ -154,9 +144,6 @@
                                     <div class="form-floating theme-form-floating">
                                         <input type="text" name="room" class="form-control" placeholder="101" value="{{ old('room') }}">
                                         <label>Unit / Room no.</label>
-                                        {{-- @error('room')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror --}}
                                         <span class="error" style="color:red" id="error-room-no"></span>
                                     </div>
                                 </div>
@@ -258,7 +245,7 @@
                 document.getElementById('error-zip-code').textContent = 'Please provide your zip code.';
             } else if (!/^\d+$/.test(zip_code)) {
                 isValid = false;
-                document.getElementById('error-zip-code').textContent = 'Please provide a valid 7-digit zip code.';
+                document.getElementById('error-zip-code').textContent = 'Please provide a valid digit.';
             }
     
             if (!prefecture) {
