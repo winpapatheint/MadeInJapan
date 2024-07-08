@@ -241,10 +241,6 @@ class SellerController extends Controller
 
     public function storeHelp(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'subject' => 'present|string|max:255',
-        //     'body' => 'present|string|max:255',
-        // ]);
         $help = new Help();
 
         if ($request->hasFile('image')) {

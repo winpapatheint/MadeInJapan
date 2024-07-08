@@ -53,21 +53,6 @@
                                                         </h4>
                                                     </div>
                                                 </div>
-
-                                                @if (!empty($start->img))
-                                                    <div class="row align-items-center">
-                                                        <div class="col-md-4">
-                                                            <label class="col-form-label form-label-title">
-                                                                Image
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <h4>
-                                                                <img width="100" src="{{ asset('images/'.$start->img) }}">
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                @endif
                                             </div>
 
                                             @if(isset($reply))
@@ -139,7 +124,7 @@
                         <label
                             class="col-lg-2 col-md-3 col-form-label form-label-title">Image</label>
                         <div class="col-md-9 col-lg-10">
-                            <input class="form-control" type="file" name="image" onchange="mainThamUrl(this)">
+                            <input class="form-control" type="file" name="image" onchange="validateImage(this)">
                             <img src="" id="mainThmb">
                         </div>
                     </div>
@@ -160,8 +145,6 @@
                     </div>
             </div>
             <div class="modal-footer">
-                
-                    @csrf
                     <button type="submit" class="btn btn-animation">Reply</button>
                 </form>
                 <button type="button" class="btn btn-animation btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -170,4 +153,27 @@
     </div>
 </div>
 <!-- Reply Modal End-->
+<script>
+    function validateImage(input) {
+        var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+        if (!allowedExtensions.exec(input.value)) {
+            // alert('Invalid file type. Only images (JPG, JPEG, PNG, GIF) are allowed.');
+            document.getElementById('error-image').textContent =
+                'Invalid file type. Only images (JPG, JPEG, PNG, GIF) are allowed.';
+            input.value = '';
+            return false;
+        } else {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var img = document.getElementById('mainThmb');
+                    img.src = e.target.result;
+                    img.style.width = '100px';
+                    img.style.height = '100px';
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    }
+</script>
 @endsection

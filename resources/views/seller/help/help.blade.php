@@ -299,7 +299,10 @@
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
-                    document.getElementById('mainThmb').src = e.target.result;
+                    var img = document.getElementById('mainThmb');
+                    img.src = e.target.result;
+                    img.style.width = '100px';
+                    img.style.height = '100px';
                 }
                 reader.readAsDataURL(input.files[0]);
             }

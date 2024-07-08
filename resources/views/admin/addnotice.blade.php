@@ -23,7 +23,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-header-2">
-                                    <h5>Contact-Us</h5>
+                                    <h5>Notice All</h5>
                                 </div>
 
                                 @php $action= route('noticeall'); @endphp

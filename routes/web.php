@@ -263,6 +263,7 @@ Route::post('admin/registerblog', [AdminController::class, 'storeblog'])->name('
 Route::post('admin/registernewsletter', [AdminController::class, 'storenewsletter'])->name('registernewsletter');
 Route::get('blog/{blogid}', [AdminController::class, 'blogdetail']);
 Route::get('/editblog/{blogid}', [AdminController::class, 'editblog']);
+Route::post('/adminreplyresent', [AdminController::class, 'storeReply'])->middleware(['auth', 'role:admin'])->name('admin.reply.sent');
 
 
 //endblog

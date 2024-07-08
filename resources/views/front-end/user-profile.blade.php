@@ -182,7 +182,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    {{ $user->phone }}
+                                                    {{ $user->buyer->phone }}
                                                 </div>
                                                 <div class="col-md-4"></div>
                                             </div>
