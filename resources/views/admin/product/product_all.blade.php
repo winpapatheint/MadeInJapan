@@ -16,18 +16,21 @@
         .table thead th.sticky-1,
         .table tbody td.sticky-1 {
             left: 0;
+            min-width: 50px;
             z-index: 2;
         }
 
         .table thead th.sticky-2,
         .table tbody td.sticky-2 {
             left: 50px;
+            min-width: 200px;
             z-index: 2;
         }
 
         .table thead th.sticky-3,
         .table tbody td.sticky-3 {
             left: 250px;
+            min-width: 300px;
             z-index: 2;
         }
 
@@ -59,6 +62,46 @@
         .table tbody tr:hover .sticky {
             background-color: #f1f1f1;
         }
+
+        @media (max-width: 575.98px) {
+            .table thead th.sticky-1,
+            .table tbody td.sticky-1 {
+                left: 0px;
+                min-width: 20px;
+            }
+            .table thead th.sticky-2,
+            .table tbody td.sticky-2 {
+                left: 40px;
+                min-width: 30px;
+            }
+
+            .table thead th.sticky-3,
+            .table tbody td.sticky-3 {
+                left: 40px;
+                min-width: 50px;
+                max-width: 140px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .table thead th.sticky-1,
+            .table tbody td.sticky-1 {
+                left: 0px;
+                min-width: 20px;
+            }
+            .table thead th.sticky-2,
+            .table tbody td.sticky-2 {
+                left: 40px;
+                min-width: 30px;
+            }
+
+            .table thead th.sticky-3,
+            .table tbody td.sticky-3 {
+                left: 40px;
+                min-width: 50px;
+                max-width: 140px;
+            }
+        }
     </style>
 
     <div class="page-body">
@@ -77,10 +120,10 @@
                                     <table class="table all-package theme-table table-product" id="table_id">
                                         <thead>
                                             <tr>
-                                                <th class="sticky sticky-1" style="min-width: 50px">No</th>
+                                                <th class="sticky sticky-1">No</th>
                                                 <th>Date</th>
-                                                <th class="sticky sticky-2" style="min-width: 200px">Product Image</th>
-                                                <th class="sticky sticky-3" style="min-width: 300px">Product Name</th>
+                                                <th class="sticky sticky-2">Product Image</th>
+                                                <th class="sticky sticky-3">Product Name</th>
                                                 <th style="min-width: 120px">Shop Name</th>
                                                 <th style="min-width: 120px">Current Qty</th>
                                                 <th style="min-width: 120px">Price<br>(Tax inc)</th>
@@ -106,7 +149,7 @@
                                                             src="{{ asset('images/' . $list->product_thambnail) }}"
                                                             alt="thumb" style="width: 50px;height: 50px;"></td>
                                                     <td class="sticky sticky-3"
-                                                        style="text-align:left; max-width: 200px;overflow: hidden;"
+                                                        style="text-align:left; overflow: hidden;"
                                                         data-label="{{ $list->product_name }}">
                                                         @if (mb_strlen($list->product_name) > 30)
                                                             {!! mb_substr($list->product_name, 0, 30) . '<br>' . mb_substr($list->product_name, 30, 30) . '...' !!}

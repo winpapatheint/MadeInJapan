@@ -1,12 +1,30 @@
 <x-auth-layout>
-
-    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
-    <!-- bootstrap  css -->
     <style>
         .table>:not(caption)>*>* {
             border-bottom-width: 0px !important;
+        }
+        /* Extra small devices (phones, less than 576px) */
+        @media (max-width: 575.98px) {
+            .d-inline-flex {
+                display: block !important;
+            }
+            .d-inline-flex .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Small devices (phones, 576px and up) */
+        @media (min-width: 576px) {
+            .d-inline-flex {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: space-between;
+            }
+            .d-inline-flex .btn {
+                width: auto;
+                margin-bottom: 0;
+            }
         }
     </style>
 
@@ -19,7 +37,7 @@
                         <div class="card-body">
                             <div class="title-header option-title">
                                 <h5>All Category</h5>
-                                <form class="d-inline-flex">
+                                <div class="d-inline-flex">
                                     <a href="{{ route('admin.all.addcategory') }}" class="align-items-center btn btn-theme d-flex">
                                         <i data-feather="plus-square"></i>Add Main Category
                                     </a>&nbsp;&nbsp;
@@ -29,7 +47,7 @@
                                     <a href="{{ route('admin.all.addsubcategory') }}" class="align-items-center btn btn-theme d-flex">
                                         <i data-feather="plus-square"></i>Add SubCategory
                                     </a>
-                                </form>
+                                </div>
                             </div>
                             @include('components.messagebox')
                             <div class="table-responsive category-table">
