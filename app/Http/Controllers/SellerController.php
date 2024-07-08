@@ -171,14 +171,23 @@ class SellerController extends Controller
 
     public function help()
     {
+        $limit = 10;
         $validated = request()->validate([
             'search' => 'string|nullable',
         ]);
 
         $search = $validated['search'] ?? null;
         $userEmail = Auth::user()->email;
-        $receivedQuery = Help::where('to', $userEmail)->latest();
-        $sentQuery = Help::where('from', $userEmail)->latest();
+        $receivedQuery = Help::where('to', $userEmail)
+                        ->select('helps.*')
+                        ->join(DB::raw('(SELECT MAX(id) as id FROM helps WHERE `to` = "' . $userEmail . '" GROUP BY subject) as latest_help'), function($join) {
+                            $join->on('helps.id', '=', 'latest_help.id');
+                        });
+        $sentQuery = Help::where('from', $userEmail)
+                        ->select('helps.*')
+                        ->join(DB::raw('(SELECT MAX(id) as id FROM helps WHERE `from` = "' . $userEmail . '" GROUP BY subject) as latest_help'), function($join) {
+                            $join->on('helps.id', '=', 'latest_help.id');
+                        });
         if ($search) {
             $receivedQuery->where(function($q) use ($search) {
                 $q->where('to', 'LIKE', "%{$search}%")
@@ -195,23 +204,25 @@ class SellerController extends Controller
             });
         }
 
-        $received = $receivedQuery->paginate(10);
-        $sent = $sentQuery->paginate(10);
+        $received = $receivedQuery->orderBy('created_at', 'desc')->paginate($limit);
+        $sent = $sentQuery->orderBy('created_at', 'desc')->paginate($limit);
 
-        return view('seller.help.help', compact('received', 'sent'));
+        $ttl = $received->total();
+        $ttlpage = ceil($ttl / $limit);
+        $sentttl = $sent->total();
+        $sentttlpage = ceil($sentttl / $limit);
+
+        return view('seller.help.help', compact('received', 'sent', 'ttl', 'ttlpage', 'sentttl', 'sentttlpage'));
     }
 
 
 
     public function detailHelp($id)
     {
-        $getId = Help::find($id);
-        if ($getId) {
-            $helpId = $getId->help_id;
-            $start = Help::find($id);
-            $reply = Help::where('help_id', $helpId)->get();
+        $start = Help::find($id);
+        if ($start) {
+            $reply = Help::where('help_id', $start->help_id)->where('subject', $start->subject)->get();
         } else {
-            $start = $getId;
             $reply = null;
         }
 
@@ -294,18 +305,14 @@ class SellerController extends Controller
 
     public function storeReply(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'body' => 'present|string|max:255',
-        // ]);
-         $help = new Help();
+        $help = new Help();
 
-         if (!empty($request->image)) {
+        if (!empty($request->image)) {
             $img = $request->image;
             $imageName = time().'.'.$img->extension();
             $request->image->move(public_path('images'), $imageName);
 
-         }
-         else {
+        } else {
             $imageName = '';
         }
 
@@ -313,18 +320,18 @@ class SellerController extends Controller
         $check = Help::find($request->id);
         $help->help_id = $check->help_id;
         $help->name = Auth::user()->name;
-        $help->to = 'admin@asia-hd.com';
+        $help->to = $check->to == Auth::user()->email ? $check->from : $check->to;
         $help->from = Auth::user()->email;
         $help->shop_name = $shopName;
-        $help->subject = $request->subject;
+        $help->subject = $check->subject;
         $help->body = $request->body;
         $help->img = $imageName;
         $help->updated_at = Carbon::now();
         $help->save();
 
         $helpDate = Carbon::now()->format('M d, Y');
-        $adminemail = 'admin@asia-hd.com';
-        $data = ['title' => $request->subject,
+        $adminemail = $help->to;
+        $data = ['title' => $check->subject,
                 'content' => $request->body,
                 'imgName' => $imageName,
                 'helpDate' => $helpDate,

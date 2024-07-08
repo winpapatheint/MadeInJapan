@@ -284,19 +284,17 @@
 
                                     @foreach ($notifications as $key => $notify)
                                         @if (!empty($notify->time))
-                                            <li
-                                                style="display: block; background-color: {{ $key % 2 == 0 ? '#f9f9f9' : '#f1f1f1' }}">
-                                                @if ($notify->message == 'A new order added:')
-                                                    <a href="{{ route('detail.order', ['id' => $notify->related_id]) }}"
-                                                        class="notification-link" data-id="{{ $notify->id }}">
-                                                    @elseif ($notify->message == 'A new contact added:')
-                                                        <a href="{{ route('help.detail', ['id' => $notify->related_id]) }}"
-                                                            class="notification-link" data-id="{{ $notify->id }}">
-                                                        @elseif ($notify->message == 'A new product added:')
-                                                            <a href="{{ route('detail.product', ['id' => $notify->related_id]) }}"
-                                                                class="notification-link"
-                                                                data-id="{{ $notify->id }}">
-                                                @endif
+                                            <li style="display: block; background-color: {{ $key % 2 == 0 ? '#f9f9f9' : '#f1f1f1' }}">
+                                            @if ($notify->message == 'A new order added:')
+                                                <a href="{{ route('detail.order', ['id' => $notify->related_id]) }}"
+                                                    class="notification-link" data-id="{{ $notify->id }}">
+                                            @elseif ($notify->message == 'A new contact added:')
+                                                <a href="{{ route('help.detail', ['id' => $notify->related_id]) }}"
+                                                    class="notification-link" data-id="{{ $notify->id }}">
+                                            @elseif ($notify->message == 'A new product added:')
+                                                <a href="{{ route('detail.product', ['id' => $notify->related_id]) }}"
+                                                    class="notification-link" data-id="{{ $notify->id }}">
+                                            @endif
                                                 @if ($notify->seen == 0)
                                                     @php
                                                         $color = '';
@@ -313,15 +311,15 @@
                                                         $color = $key % 2 == 0 ? '#f9f9f9' : '#f1f1f1';
                                                     @endphp
                                                 @endif
-                                                <span>
-                                                    <span style="color: var(--theme-color);">
-                                                        <i class="fa fa-circle me-2 font-primary notification-circle"
-                                                            style="font-size:11px;color: {{ $color }} !important">
-                                                        </i>{{ $notify->message }}</span>
-                                                    <span style="float: right;color: var(--theme-color);">
-                                                        &nbsp;{{ \Carbon\Carbon::parse($notify->time)->format('y/m/d H:i') }}
+                                                    <span>
+                                                        <span style="color: var(--theme-color);">
+                                                            <i class="fa fa-circle me-2 font-primary notification-circle"
+                                                                style="font-size:11px;color: {{ $color }} !important">
+                                                            </i>{{ $notify->message }}</span>
+                                                        <span style="float: right;color: var(--theme-color);">
+                                                            &nbsp;{{ \Carbon\Carbon::parse($notify->time)->format('y/m/d H:i') }}
+                                                        </span>
                                                     </span>
-                                                </span>
                                                 </a>
                                             </li>
                                         @endif

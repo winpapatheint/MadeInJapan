@@ -590,7 +590,7 @@
                         <ul class="footer-list footer-contact footer-list-light">
                             @if (empty(Auth::user()))
                             <li>
-                                <a href="{{ route('seller.register') }}" class="light-text">Seller Register</a>
+                                <a href="{{ url('https://new-style.life/seller/register') }}" class="light-text" target="_blank">Seller Register</a>
                             </li>
                             @endif
                             @if (!empty(Auth::user()))
