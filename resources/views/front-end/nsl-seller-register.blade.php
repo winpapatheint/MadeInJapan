@@ -8,6 +8,30 @@
             font-size: 2rem;
             vertical-align: middle;
         }
+        .btn-furniture {
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .btn-furniture:hover {
+            background-color: #8d959e;
+            color: #fff;
+            border-color: #8d959e;
+            text-decoration: none;
+        }
+        .btn-furniture i {
+            margin-left: 8px;
+        }
+        .sign-up-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
     <!-- Breadcrumb Section Start -->
     <section class="breadcrumb-section pt-0">
@@ -37,12 +61,12 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-10 col-sm-12">
                     <div class="log-in-box">
-                        <div class="log-in-title">
+                        <div class="log-in-title text-center">
                             <h3>Information For Seller Signing Up</h3>
                         </div>
 
                         <div class="input-box">
-                            Please register on <strong>New Style Life</strong> to begin your journey as a seller. 
+                            &emsp;&emsp;&emsp;&emsp;Please register on <strong>New Style Life</strong> to begin your journey as a seller. 
                             By registering with us, your account details will be automatically synced to 
                             <strong>Made In Japan</strong> at 2:00 AM the following day, using the same 
                             information. This setup allows you to sell a variety of products from different 
@@ -50,7 +74,7 @@
                             made in Japan. Register today and start showcasing your products on both platforms 
                             seamlessly.
                         </div>
-                        <div class="partnership-logos my-4">
+                        <div class="partnership-logos my-4 text-center">
                             <img src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" class="img-fluid blur-up lazyload mx-2" alt="Made In Japan Logo">
                             <span class="partnership-separator mx-2">+</span>
                             <img src="{{ asset('backend/assets/images/logo/newstyle_logo.png') }}" class="img-fluid blur-up lazyload mx-2" alt="New Style Life Logo">
@@ -58,7 +82,7 @@
                         <div class="sign-up-box">
                             <a
                             href="https://new-style.life/seller/register"
-                            target="_blank" style="width: 300px"
+                            target="_blank" style="width: 300px;"
                             class="btn btn-furniture mt-xxl-4 mt-3 home-button mend-auto">Register On New Style Life
                             <i class="fa-solid fa-right-long ms-2 icon"></i></a>
                         </div>

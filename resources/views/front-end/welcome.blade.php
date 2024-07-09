@@ -941,7 +941,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="best-selling-slider product-wrapper wow fadeInUp">
+                <div class="banner-slider product-wrapper wow fadeInUp">
                     @php
                         $productCount = $bestSellerProducts->count();
                     @endphp
@@ -968,19 +968,11 @@
                                                     <a href="{{ route('show-product-left-thumbnail', ['id' => $product->id]) }}"
                                                         class="text-title">
                                                         <h6 class="name">
-                                                            @if (mb_strlen($product->product_name) > 70)
-                                                                {!! mb_substr($product->product_name, 0, 70) . '<br>' . mb_substr($product->product_name, 70, 65) . '...' !!}
-                                                            @else
-                                                                {!! nl2br(e($product->product_name)) !!}
-                                                            @endif
+                                                            {!! nl2br(e($product->product_name)) !!}
                                                         </h6>
                                                     </a>
                                                     <span>
-                                                        @if (mb_strlen($product->product_size) > 70)
-                                                            {!! mb_substr($product->product_size, 0, 70) . '<br>' . mb_substr($product->product_size, 70, 65) . '...' !!}
-                                                        @else
-                                                            {!! nl2br(e($product->product_size)) !!}
-                                                        @endif
+                                                        {!! nl2br(e($product->product_size)) !!}
                                                     </span>
                                                     <h6 class="price theme-color">
                                                         ¥{{ number_format($product->selling_price, 0, '.', ',') }}
