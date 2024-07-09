@@ -543,7 +543,6 @@
                                     <use xlink:href="{{ asset('frontend/assets/svg/leaf.svg#leaf') }}"></use>
                                 </svg>
                             </span>
-                            <p>A virtual assistant collects the products from your list</p>
                         </div>
 
                         <div class="row row-cols-xxl-5 row-cols-md-4 row-cols-sm-3 row-cols-2 g-sm-4 g-3 no-arrow">
@@ -940,10 +939,9 @@
                                 <use xlink:href="{{ asset('frontend/assets/svg/leaf.svg#leaf') }}"></use>
                             </svg>
                         </span>
-                        <p>A virtual assistant collects the products from your list</p>
                     </div>
                 </div>
-                <div class="banner-slider product-wrapper wow fadeInUp">
+                <div class="best-selling-slider product-wrapper wow fadeInUp">
                     @php
                         $productCount = $bestSellerProducts->count();
                     @endphp
@@ -970,16 +968,16 @@
                                                     <a href="{{ route('show-product-left-thumbnail', ['id' => $product->id]) }}"
                                                         class="text-title">
                                                         <h6 class="name">
-                                                            @if (mb_strlen($product->product_name) > 15)
-                                                                {!! mb_substr($product->product_name, 0, 15) . '<br>' . mb_substr($product->product_name, 15, 15) . '...' !!}
+                                                            @if (mb_strlen($product->product_name) > 70)
+                                                                {!! mb_substr($product->product_name, 0, 70) . '<br>' . mb_substr($product->product_name, 70, 65) . '...' !!}
                                                             @else
                                                                 {!! nl2br(e($product->product_name)) !!}
                                                             @endif
                                                         </h6>
                                                     </a>
                                                     <span>
-                                                        @if (mb_strlen($product->product_size) > 15)
-                                                            {!! mb_substr($product->product_size, 0, 15) . '<br>' . mb_substr($product->product_size, 15, 15) . '...' !!}
+                                                        @if (mb_strlen($product->product_size) > 70)
+                                                            {!! mb_substr($product->product_size, 0, 70) . '<br>' . mb_substr($product->product_size, 70, 65) . '...' !!}
                                                         @else
                                                             {!! nl2br(e($product->product_size)) !!}
                                                         @endif

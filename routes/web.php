@@ -108,6 +108,9 @@ Route::get('blogdetail/{blogid}', [AdminController::class, 'bloglistdetail']);
 Route::get('/contact', function () {
     return view('front-end.contact-us');
 });
+Route::get('/New-Style-Life-seller-register', function () {
+    return view('front-end.nsl-seller-register');
+})->name('nsl-seller-register');
 Route::post('contact', [AdminController::class, 'contact'])->name('contact');
 Route::get('/faq', [AdminController::class, 'indexfaq']);
 Route::get('faq/{faqid}', [AdminController::class, 'faqdetail']);

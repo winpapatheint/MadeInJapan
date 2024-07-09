@@ -252,9 +252,6 @@
 
                                                 <div class="button-group">
                                                     <a href="{{ route('show_carts') }}" class="btn btn-sm cart-button">View Cart</a>
-                                                    {{-- <a href="{{ url('/checkout') }}" class="btn btn-sm cart-button
-                                                    theme-bg-color
-                                                    text-white">Checkout</a> --}}
                                                 </div>
                                             </div>
                                             @endif
@@ -523,8 +520,8 @@
             <div class="main-footer">
                 <div class="row g-md-4 gy-sm-5">
                     <div class="col-xxl-3 col-xl-4 col-sm-6">
-                        <a href="index.html" class="foot-logo theme-logo">
-                            <img src="../assets/images/logo/4.png" class="img-fluid blur-up lazyload" alt="">
+                        <a href="/" class="foot-logo theme-logo">
+                            <img src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" class="img-fluid blur-up lazyload" alt="">
                         </a>
                         <p class="information-text information-text-2">
                             Infusing style into everyday living, our curated collection elevates your space.
@@ -563,7 +560,7 @@
 
                     <div class="col-xxl-2 col-xl-4 col-sm-6">
                         <div class="footer-title">
-                            <h4 class="text-white">Useful Link</h4>
+                            <h4 class="text-white">Useful Links</h4>
                         </div>
                         <ul class="footer-list footer-list-light footer-contact">
                             <li>
@@ -590,7 +587,7 @@
                         <ul class="footer-list footer-contact footer-list-light">
                             @if (empty(Auth::user()))
                             <li>
-                                <a href="{{ url('https://new-style.life/seller/register') }}" class="light-text" target="_blank">Seller Register</a>
+                                <a href="{{ route('nsl-seller-register') }}" class="light-text">Seller Register</a>
                             </li>
                             @endif
                             @if (!empty(Auth::user()))
@@ -885,13 +882,13 @@
     <script src="{{ asset('frontend/assets/js/auto-height.js') }}"></script>
 
     <!-- Timer Js -->
-    <script src="{{ asset('frontend/assets/js/timer1.js') }}"></script>
+    {{-- <script src="{{ asset('frontend/assets/js/timer1.js') }}"></script> --}}
 
     <!-- Fly Cart Js -->
     <script src="{{ asset('frontend/assets/js/fly-cart.js') }}"></script>
 
     <!-- Quantity js -->
-    <script src="{{ asset('frontend/assets/js/quantity-2.js') }}"></script>
+    {{-- <script src="{{ asset('frontend/assets/js/quantity-2.js') }}"></script> --}}
 
     <!-- WOW js -->
     <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
@@ -902,6 +899,9 @@
 
     <!-- theme setting js -->
     <script src="{{ asset('frontend/assets/js/theme-setting.js') }}"></script>
+
+    <!-- sidebar open js -->
+    <script src="{{ asset('frontend/assets/js/filter-sidebar.js') }}"></script>
 
     <script>
         $(document).ready(function() {
