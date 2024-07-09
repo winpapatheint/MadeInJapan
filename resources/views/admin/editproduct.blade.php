@@ -442,7 +442,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-animation" onclick="validateForm()">Yess</button>
+                            <button type="button" class="btn btn-animation" onclick="validateForm()">Yes</button>
                             <button type="button" class="btn btn-animation btn-secondary"
                                 data-bs-dismiss="modal">No</button>
                         </div>
