@@ -152,7 +152,7 @@
         <div class="footer">
             <p>Admin Team,</p>
             <p>Made In Japan</p>
-            <p><a href="https://new-style.life/">https://new-style.life/</a></p>
+            <p><a href="https://madein-japan.com/">https://madein-japan.com/</a></p>
         </div>
     </div>
 </body>

@@ -138,9 +138,9 @@
         <div class="footer">
             <p>Thank You,</p>
             <p>Made In Japan</p>
-            <p>Email: info@new-style.life</p>
+            <p>Email: info@madein-japan.com</p>
             <p>Phone: (+81) 03-3981-5090</p>
-            <p><a href="https://new-style.life/">https://new-style.life/</a></p>
+            <p><a href="https://madein-japan.com/">https://madein-japan.com/</a></p>
             <p>〒171-0014<br>
                 Room 502, Wada Building<br>
                4-27-5 Ikebukuro, Toshima-ku<br>

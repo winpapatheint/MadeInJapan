@@ -120,7 +120,7 @@
         
         <p>Thank you for shopping with us.</p>
         <div class="footer">
-            <p>If you have any questions, please contact us at info@new-style.life.</p>
+            <p>If you have any questions, please contact us at info@madein-japan.com.</p>
         </div>
     </div>
 </body>

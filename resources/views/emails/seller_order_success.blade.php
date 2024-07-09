@@ -119,7 +119,7 @@
 
         <p>Check and prepare to confirm the order.</p>
         <div class="footer">
-            <p>If you have any questions, please contact us at info@new-style.life.</p>
+            <p>If you have any questions, please contact us at info@madein-japan.com.</p>
         </div>
     </div>
 </body>

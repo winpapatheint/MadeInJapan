@@ -660,7 +660,7 @@
                                 <a href="javascript:void(0)" class="light-text">
                                     <div class="inform-box">
                                         <i data-feather="mail"></i>
-                                        <p>Email Us: support@new-style.life</p>
+                                        <p>Email Us: support@madein-japan.com</p>
                                     </div>
                                 </a>
                             </li>
