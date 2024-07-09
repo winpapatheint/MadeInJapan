@@ -2828,7 +2828,7 @@ class AdminController extends Controller
     public function contact(Request $request)
     {
         if ($request->from == 'faq') {
-            $inquiry_email = 'info@new-style.life';
+            $inquiry_email = 'info-test@asia-hd.com';
 
             $data = array('name' => $request->name);
             $faqDate = Carbon::now()->format('M d, Y');
@@ -2845,7 +2845,7 @@ class AdminController extends Controller
            
             return redirect('/faq#ts-form')->with('success', 'Your message has been successfully sent.');
         } else if ($request->from == 'contact') {
-            $inquiry_email = 'info@new-style.life';
+            $inquiry_email = 'info-test@asia-hd.com';
             $contactDate = Carbon::now()->format('M d, Y');
 
             $data = [
