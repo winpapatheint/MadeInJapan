@@ -19,7 +19,7 @@
         body {
             text-align: center;
             margin: 0 auto;
-            width: 650px;
+            max-width: 650px;
             font-family: 'Public Sans', sans-serif;
             background-color: #e2e2e2;
             display: block;
@@ -125,6 +125,55 @@
             z-index: -1;
             background-size: contain;
             opacity: 0.3;
+        }
+
+        @media only screen and (max-width: 768px) {
+            body {
+                width: 100%;
+            }
+
+            table {
+                width: 90%;
+            }
+
+            .header-logo,
+            .header-menu ul li,
+            .dilivery-table,
+            .footer-table {
+                padding: 10px !important;
+                width: 90% !important;
+            }
+
+            .header-logo img,
+            .product-table tbody tr td img {
+                width: 90%;
+                height: auto;
+            }
+
+            .product-detail {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .dilivery-table td {
+                padding: 15px 10px !important;
+                display: block;
+                width: 90% !important;
+                border-right: none !important;
+            }
+
+            .shipping-table thead th {
+                text-align: left;
+            }
+
+            .footer-social-icon {
+                margin: 10px auto !important;
+            }
+
+            .footer-table::before,
+            .footer-table::after {
+                display: none;
+            }
         }
     </style>
 </head>

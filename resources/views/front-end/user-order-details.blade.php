@@ -75,8 +75,8 @@
                                             type="button" style="font-size: 14px; text-align: center;" href="{{route ('user_dashboard')}}"><i data-feather="home"></i>
                                             DashBoard</a>
                                 </li>
-                                <li class="nav-item active" role="presentation">
-                                    <a class="nav-link" id="pills-order-tab"
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="pills-order-tab"
                                         style="font-size: 14px; text-align: center;" href="{{route ('user_order')}}"><i
                                             data-feather="shopping-bag"></i>Orders</a>
                                 </li>
@@ -117,6 +117,8 @@
                     <div class="col-xxl-9 col-lg-8" class="tab-pane fade" id="pills-order" role="tabpanel">
                         <!-- Orders Details Start -->
                             <div class="page-body">
+                                <button class="btn left-dashboard-show btn-animation btn-md fw-bold d-block mb-4 d-lg-none">
+                                    My Menu</button>
                     <!-- tracking table start -->
     
                     <div class="container-fluid">

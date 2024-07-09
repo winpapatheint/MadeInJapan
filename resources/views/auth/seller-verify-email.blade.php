@@ -5,8 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">
-    <title>Asia Food Museum | Email template </title>
+    <link rel="icon" href="{{ asset('frontend/assets/logos/mij_slogo.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('frontend/assets/logos/mij_slogo.png') }}" type="image/x-icon">
+    <title>Made In Japan</title>
 
     <!-- Google Font css -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +20,7 @@
         body {
             text-align: center;
             margin: 0 auto;
-            width: 650px;
+            max-width: 650px;
             font-family: 'Public Sans', sans-serif;
             background-color: #e2e2e2;
             display: block;
@@ -49,7 +50,7 @@
         }
 
         .text-center {
-            text-align: center
+            text-align: center;
         }
 
         .header-menu ul li+li {
@@ -110,6 +111,82 @@
         .theme-color {
             color: #355AB1;
         }
+
+        @media only screen and (max-width: 768px) {
+            body {
+                width: 100%;
+                padding: 0 10px;
+            }
+
+            table {
+                width: 100%;
+            }
+
+            .header-logo,
+            .header-menu ul li,
+            .footer-table {
+                padding: 10px !important;
+                width: 100% !important;
+            }
+
+            .header-logo img {
+                width: 100%;
+                height: auto;
+            }
+
+            .header-menu ul {
+                display: block;
+                text-align: center;
+            }
+
+            .header-menu ul li {
+                display: block;
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+
+            .content-table thead tr td {
+                display: block;
+                text-align: center;
+            }
+
+            .footer-social-icon {
+                margin: 10px auto !important;
+            }
+
+            .footer-table::before,
+            .footer-table::after {
+                display: none;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .password-button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            .header-logo img {
+                width: 150px;
+                height: auto;
+            }
+
+            .content-table h3 {
+                font-size: 18px;
+            }
+
+            .content-table p {
+                font-size: 12px;
+            }
+
+            .footer-social-icon h4 {
+                font-size: 17px;
+            }
+
+            .footer-table h5 {
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 
@@ -148,7 +225,7 @@
                         <thead>
                             <tr>
                                 <td>
-                                    <img src="{{ asset('images/order-success-poster.png') }}" alt="">
+                                    <img src="{{ asset('images/order-success-poster.png') }}" alt="" style="width: 100%; height: auto;">
                                 </td>
                             </tr>
                         </thead>
@@ -159,14 +236,12 @@
                         <thead>
                             <tr style="display: block;">
                                 <td style="display: block;">
-                                    <h3
-                                        style="font-weight: 700; font-size: 20px; margin: 0; text-transform: uppercase;">
-                                        Hi {{ $user->name }} ! Welcome To Made In Japan.</h3>
+                                    <h3 style="font-weight: 700; font-size: 20px; margin: 0; text-transform: uppercase;">
+                                        Hi {{ $user->name }}! Welcome To Made In Japan.
+                                    </h3>
                                 </td>
-
                                 <td>
-                                    <p
-                                        style="font-size: 14px;font-weight: 600;width: 82%;margin: 8px auto 0;line-height: 1.5;color: #939393;font-family: 'Nunito Sans', sans-serif;">
+                                    <p style="font-size: 14px;font-weight: 600;width: 82%;margin: 8px auto 0;line-height: 1.5;color: #939393;font-family: 'Nunito Sans', sans-serif;">
                                         Be it a manufacturer, vendor or supplier, simply sell your products online on 
                                         Made In Japan and become a top ecommerce player with minimum investment. 
                                         Through a team of experts offering exclusive seller workshops, training, seller support 
@@ -187,10 +262,9 @@
                             <tr style="display: block;">
                                 <td style="display: block;">
                                     <form method="POST" action="{{ route('verification.send') }}">
-                                    @csrf
+                                        @csrf
                                         <input type="hidden" name="email" value="{{ $user->email ?? ''}}">
-                                        <button class="password-button" type="submit">Resent Email
-                                        </button>
+                                        <button class="password-button" type="submit">Resent Email</button>
                                     </form>
                                     {{-- <button class="password-button">Verify Email</button> --}}
                                 </td>
@@ -202,22 +276,15 @@
                         <thead>
                             <tr style="display: block;">
                                 <td style="display: block;">
-                                    <p
-                                        style="font-size: 14px; font-weight: 600; width: 82%; margin: 0 auto; line-height: 1.5; color: #939393; font-family: 'Nunito Sans', sans-serif;">
-                                        If you have any question, please email us at <span
-                                            class="theme-color">info@new-style.life</span>, call <span
-                                            class="theme-color">(+81) 03-3981-5090</span> or vixit our <span
-                                            class="theme-color"><a class="nav-link" href="{{ url('/faq') }}">FAQ</a></span> 
-                                            You can also chat with a real live human
-                                        during our operating hours. they can answer questions about account or help you
-                                        with your meditation practice.</p>
+                                    <p style="font-size: 14px; font-weight: 600; width: 82%; margin: 0 auto; line-height: 1.5; color: #939393; font-family: 'Nunito Sans', sans-serif;">
+                                        If you have any questions, please email us at <span class="theme-color">info@new-style.life</span>, call <span class="theme-color">(+81) 03-3981-5090</span> or visit our <span class="theme-color"><a class="nav-link" href="{{ url('/faq') }}">FAQ</a></span>. You can also chat with a real live human during our operating hours. They can answer questions about your account or help you with your meditation practice.
+                                    </p>
                                 </td>
                             </tr>
                         </thead>
                     </table>
 
-                    <table class="text-center footer-table" align="center" border="0" cellpadding="0" cellspacing="0"
-                        width="100%"
+                    <table class="text-center footer-table" align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
                         style="background-color: #282834; color: white; padding: 24px; overflow: hidden; z-index: 0; margin-top: 30px;">
                         <tr>
                             <td>
@@ -225,8 +292,7 @@
                                     align="center" style="margin: 8px auto 11px;">
                                     <tr>
                                         <td>
-                                            <h4 style="font-size: 19px; font-weight: 700; margin: 0;">Shop For <span
-                                                    class="theme-color">Made In Japan</span></h4>
+                                            <h4 style="font-size: 19px; font-weight: 700; margin: 0;">Shop For <span class="theme-color">Made In Japan</span></h4>
                                         </td>
                                     </tr>
                                 </table>
@@ -234,26 +300,22 @@
                                     align="center" style="margin: 8px auto 20px;">
                                     <tr>
                                         <td>
-                                            <a href="{{ url('/contact') }}"
-                                                style="font-size: 14px; font-weight: 600; color: #fff; text-decoration: underline; text-transform: capitalize;">Contact
-                                                Us</a>
+                                            <a href="{{ url('/contact') }}" style="font-size: 14px; font-weight: 600; color: #fff; text-decoration: underline; text-transform: capitalize;">Contact Us</a>
                                         </td>
                                         <td>
-                                            <a href="{{ url('/privacy-policy') }}"
-                                                style="font-size: 14px; font-weight: 600; color: #fff; text-decoration: underline; text-transform: capitalize; margin-left: 20px;">privacy
-                                                Policy</a>
+                                            <a href="{{ url('/privacy-policy') }}" style="font-size: 14px; font-weight: 600; color: #fff; text-decoration: underline; text-transform: capitalize; margin-left: 20px;">Privacy Policy</a>
                                         </td>
                                     </tr>
                                 </table>
                                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                     <tr>
                                         <td>
-                                            <h5 style="font-size: 13px; text-transform: uppercase; margin: 0; color:#ddd;
-                                letter-spacing:1px; font-weight: 500;">Specializing in Asian cuisine, we're dedicated to providing fresh,
-                                 top-quality food to Japan daily.
+                                            <h5 style="font-size: 13px; text-transform: uppercase; margin: 0; color: #ddd; letter-spacing: 1px; font-weight: 500;">
+                                                Specializing in Asian cuisine, we're dedicated to providing fresh, top-quality food to Japan daily.
                                             </h5>
-                                            <h5 style="font-size: 13px; text-transform: uppercase; margin: 10px 0 0; color:#ddd;
-                                letter-spacing:1px; font-weight: 500;">©2024 Asia Human Development, Inc. All rights reserved</h5>
+                                            <h5 style="font-size: 13px; text-transform: uppercase; margin: 10px 0 0; color: #ddd; letter-spacing: 1px; font-weight: 500;">
+                                                ©2024 Asia Human Development, Inc. All rights reserved
+                                            </h5>
                                         </td>
                                     </tr>
                                 </table>

@@ -81,10 +81,6 @@
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-address-tab" type="button" role="tab" style="font-size: 14px; text-align: center;" href="{{ route('user_addresses') }}"><i data-feather="map-pin"></i>Addresses</a>
                                 </li>
-                                {{-- <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-card-tab"
-                                        type="button" role="tab" style="font-size: 14px; text-align: center;" href="{{route ('user_cards')}}"><i data-feather="credit-card"></i>Payment Methods</a>
-                                </li> --}}
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-profile-tab" type="button" role="tab" style="font-size: 14px; text-align: center;" href="{{ route('user_profile') }}"><i data-feather="user"></i>
                                         Profile</a>
@@ -112,6 +108,8 @@
 
                     <!-- User Dashboard Section End -->
                     <div class="col-xxl-9 col-xl-8 col-lg-6 order-detail">
+                        <button class="btn left-dashboard-show btn-animation btn-md fw-bold d-block mb-4 d-lg-none">
+                            My Menu</button>
                         <div class="row g-sm-4 g-3">
                             <div class="col-xl-4 col-sm-6">
                                 <div class="order-details-contain">
