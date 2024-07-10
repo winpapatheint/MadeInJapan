@@ -96,7 +96,7 @@
                     {{-- Japanese --}}
                     <div class="log-in-box" id="JapaneseVersion" style="display: none;">
                         <div class="log-in-title text-center">
-                            <h3>販売者登録に関する情報</h3>
+                            <h3>販売者会員登録に関するお願い</h3>
                             <div class="title-header option-title" id="englishBtnDiv" style="display: flex; justify-content: flex-end;">
                                 <button class="align-items-center btn btn-theme d-flex" id="englishBtn" style="background-color: var(--theme-color); color: #fff;">
                                     Check in English
