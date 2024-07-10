@@ -146,11 +146,8 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                @php
-                                                    $ttlpage = $sent_ttlpage;
-                                                @endphp
                                                 <div>
-                                                    @include('components.pagination')
+                                                    @include('components.sendpagination')
                                                 </div>
 
                                             </div>
@@ -218,11 +215,8 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                @php
-                                                    $ttlpage = $notice_ttlpage;
-                                                @endphp
                                                 <div>
-                                                    @include('components.pagination')
+                                                    @include('components.noticepagination')
                                                 </div>
                                             </div>
                                         </div>

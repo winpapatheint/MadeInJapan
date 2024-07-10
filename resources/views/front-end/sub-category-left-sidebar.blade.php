@@ -41,17 +41,6 @@
                                     <h2>Filters</h2>
                                     <a href="{{ url('subcategorysidebar/' . $id) }}">Clear All</a>
                                 </div>
-                                {{-- <ul>
-                                @if(!empty($searchHistory))
-                                @foreach($searchHistory as $searchHist)
-                                    <li style="background-color: {{ $searchHist === $sHistory ? '#ffcccb' : 'transparent' }}">
-                                        <a href="#" onclick="updateSearchHist('{{ $searchHist }}')">{{ $searchHist }}</a>
-                                        <span class="remove-search-item" data-search="{{ $searchHist }}" onclick="removeSearchItem(this)" style="margin-left: 5px;padding-top: 5px;">
-                                        <i class="fa-solid fa-xmark"></i></span>
-                                    </li>
-                                @endforeach
-                                @endif
-                                </ul> --}}
                             </div>
                             <div class="accordion custom-accordion" id="accordionExample">
                                 <div class="accordion-item">
