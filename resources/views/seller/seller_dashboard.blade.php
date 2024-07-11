@@ -218,15 +218,15 @@
                     <div class="logo-wrapper">
                         <a href="{{ route('seller.dashboard') }}">
                             <img class="img-fluid main-logo"
-                                src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" alt="logo">
+                                src="{{ asset('backend/assets/images/logo/mijapan.png') }}" alt="logo">
                             <img class="img-fluid white-logo"
-                                src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" alt="logo">
+                                src="{{ asset('backend/assets/images/logo/mijapan.png') }}" alt="logo">
                         </a>
                     </div>
                     <div class="toggle-sidebar">
                         <i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
                         <a href="{{ route('seller.dashboard') }}">
-                            <img src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" class="img-fluid"
+                            <img src="{{ asset('backend/assets/images/logo/mijapan.png') }}" class="img-fluid"
                                 alt="">
                         </a>
                     </div>
@@ -381,7 +381,7 @@
                     <div class="logo-wrapper logo-wrapper-center">
                         <a href="{{ route('seller.dashboard') }}" data-bs-original-title="" title="">
                             <img class="img-fluid for-white"
-                                src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" alt="logo">
+                                src="{{ asset('backend/assets/images/logo/mijapan.png') }}" alt="logo">
                         </a>
                         <div class="back-btn">
                             <i class="fa fa-angle-left"></i>
@@ -393,7 +393,7 @@
                     <div class="logo-icon-wrapper">
                         <a href="{{ route('seller.dashboard') }}">
                             <img class="img-fluid main-logo main-white"
-                                src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" alt="logo">
+                                src="{{ asset('backend/assets/images/logo/mijapan.png') }}" alt="logo">
                             <img class="img-fluid main-logo main-dark"
                                 src="{{ asset('backend/assets/images/logo/logo-white.png') }}" alt="logo">
                         </a>

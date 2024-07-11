@@ -69,7 +69,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/input-tags/css/tagsinput.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/bootstrap_toggle/bootstrap-toggle.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/toastr/toastr.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/bootstrap_tagsinput/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/vendors/bootstrap-tagsinput.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/linearicon.css') }}">
     <style>
         /* Base style for search box */
@@ -215,14 +215,14 @@
                 <div class="header-logo-wrapper p-0">
                     <div class="logo-wrapper">
                         <a href="{{ route('admin.dashboard') }}">
-                            <img class="img-fluid main-logo" src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" alt="logo">
-                            <img class="img-fluid white-logo" src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" alt="logo">
+                            <img class="img-fluid main-logo" src="{{ asset('backend/assets/images/logo/mijapan.png') }}" alt="logo">
+                            <img class="img-fluid white-logo" src="{{ asset('backend/assets/images/logo/mijapan.png') }}" alt="logo">
                         </a>
                     </div>
                     <div class="toggle-sidebar">
                         <i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
                         <a href="{{ route('admin.dashboard') }}">
-                            <img src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" class="img-fluid" alt="">
+                            <img src="{{ asset('backend/assets/images/logo/mijapan.png') }}" class="img-fluid" alt="">
                         </a>
                     </div>
                 </div>
@@ -398,7 +398,7 @@
                 <div>
                     <div class="logo-wrapper logo-wrapper-center">
                         <a href="{{ route('admin.dashboard') }}" data-bs-original-title="" title="">
-                            <img class="img-fluid for-white" src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" alt="logo">
+                            <img class="img-fluid for-white" src="{{ asset('backend/assets/images/logo/mijapan.png') }}" alt="logo">
                         </a>
                         <div class="back-btn">
                             <i class="fa fa-angle-left"></i>
@@ -409,8 +409,7 @@
                     </div>
                     <div class="logo-icon-wrapper">
                         <a href="{{ route('admin.dashboard') }}">
-                            <img class="img-fluid main-logo main-white" src="{{ asset('backend/assets/images/logo/mij_blogo.png') }}" alt="logo">
-                            <img class="img-fluid main-logo main-dark" src="{{ asset('backend/assets/images/logo/logo-white.png') }}" alt="logo">
+                            <img class="img-fluid main-logo main-white" src="{{ asset('backend/assets/images/logo/mijapan.png') }}" alt="logo">
                         </a>
                     </div>
                     <nav class="sidebar-main">
@@ -473,27 +472,6 @@
                                         : '' }}" href="{{ route('orderlist') }}">
                                         <i class="ri-archive-line"></i>
                                         <span>Orders</span>
-                                    </a>
-                                </li>
-
-                                <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav
-                                    {{ request()->routeIs('admin.all.blog') ||
-                                    request()->is('admin/add/blog') ||
-                                    request()->is('blog/*') ||
-                                    request()->is('editblog/*')
-                                        ? 'active-link'
-                                        : '' }}" href="{{ route('admin.all.blog') }}">
-                                        <i class="ri-newspaper-line"></i>
-                                        <span>News</span>
-                                    </a>
-                                </li>
-
-                                <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav
-                                    {{ request()->routeIs('admin.top') || request()->is('edittop/*') ? 'active-link' : '' }}" href="{{ route('admin.top') }}">
-                                        <i class="ri-list-settings-line"></i>
-                                        <span>Top</span>
                                     </a>
                                 </li>
 
@@ -592,6 +570,37 @@
 
                                 <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title link-nav
+                                    {{ request()->routeIs('admin.all.blog') ||
+                                    request()->is('admin/add/blog') ||
+                                    request()->is('blog/*') ||
+                                    request()->is('editblog/*')
+                                        ? 'active-link'
+                                        : '' }}" href="{{ route('admin.all.blog') }}">
+                                        <i class="ri-newspaper-line"></i>
+                                        <span>News</span>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav
+                                    {{ request()->routeIs('admin.top') || request()->is('edittop/*') ? 'active-link' : '' }}" href="{{ route('admin.top') }}">
+                                        <i class="ri-list-settings-line"></i>
+                                        <span>Top</span>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav
+                                    {{ request()->routeIs('admin.story') || 
+                                    request()->is('admin/addstory') || 
+                                    request()->is('editstory/*') ? 'active-link' : '' }}" href="{{ route('admin.story') }}">
+                                        <i class="ri-list-settings-line"></i>
+                                        <span>Story</span>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav
                                     {{ request()->is('edit/admin/*') ? 'active-link' : '' }}" href="{{ url('/edit/' . auth()->user()->role . '/' . rand(10000, 99999)) }}">
                                         <i class="ri-user-3-line"></i>
                                         <span>Profile</span>
@@ -681,14 +690,14 @@
 
     <!-- Theme js -->
     <script src="{{ asset('backend/assets/js/script.js') }}"></script>
-    <script>
+    {{-- <script>
         // Assuming you have some JavaScript code to handle deletion
         document.querySelector('.delete-icon').addEventListener('click', function() {
             // Code to delete the store goes here
             // For demonstration, let's just remove the entire store element
             document.getElementById('store').remove();
         });
-    </script>
+    </script> --}}
     <script>
         $(document).ready(function() {
             $('a.notification-link').on('click', function(e) {

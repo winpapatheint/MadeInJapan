@@ -129,6 +129,7 @@ Route::get('/buyer-term-and-condition', function () {
 Route::get('/seller-term-and-condition', function () {
     return view('front-end.seller-term-and-condition');
 });
+Route::get('/our-story', [AdminController::class, 'ourStory']);
 
 Route::get('/cart', function () {
     return view('front-end.cart');
@@ -189,6 +190,7 @@ Route::get('/admin/indexcustomer', [AdminController::class, 'indexcustomer'])->m
 Route::get('/editcustomer/{topid}', [AdminController::class, 'editcustomer'])->middleware(['auth', 'role:admin']);
 Route::post('admin/registercustomer', [AdminController::class, 'storecustomer'])->middleware(['auth', 'role:admin'])->name('registercustomer');
 Route::get('/admin/top', [AdminController::class, 'indextop'])->middleware(['auth', 'role:admin'])->name('admin.top');
+Route::get('/admin/story', [AdminController::class, 'indexstory'])->middleware(['auth', 'role:admin'])->name('admin.story');
 Route::get('/admin/newsletter', [AdminController::class, 'indexnewsletter'])->middleware(['auth', 'role:admin'])->name('admin.newsletter');
 Route::get('/edittop/{topid}', [AdminController::class, 'edittop'])->middleware(['auth', 'role:admin']);
 Route::post('admin/registertop', [AdminController::class, 'storetop'])->middleware(['auth', 'role:admin'])->name('registertop');
@@ -304,6 +306,12 @@ Route::get('/admin/addsubtitle', [AdminController::class, 'addsubtitle'])->name(
 Route::get('/admin/addcategory', function () {
     return view('admin.addcategory');
 })->name('admin.all.addcategory');
+Route::get('/admin/addstory', function () {
+    return view('admin.addstory');
+})->name('admin.add.story');
+Route::post('/admin/addstory', [AdminController::class, 'storeStory'])->name('admin.store.story');
+Route::post('/admin/deletestory', [AdminController::class, 'deleteStory'])->middleware(['auth', 'role:admin'])->name('admin.delete.story');
+Route::get('/editstory/{id}', [AdminController::class, 'editStory'])->middleware(['auth', 'role:admin']);
 Route::get('/admin/addsubcategory', [AdminController::class, 'addsubcategory'])->name('admin.all.addsubcategory');
 Route::post('get-subcategories', [AdminController::class, 'getSubcategories'])->name('getSubcategories');
 
