@@ -44,8 +44,6 @@ class OrderController extends Controller
             });
         }
 
-        $order = $orderQuery->paginate($limit);
-
         $cancelledOrderQuery = OrderDetail::with('order')
             ->join('products', 'order_details.product_id', '=', 'products.id')
             ->select('order_details.*', 'products.product_name')
@@ -64,14 +62,15 @@ class OrderController extends Controller
             });
         }
 
-        $cancelledOrder = $cancelledOrderQuery->paginate($limit);
+        $order = $orderQuery->paginate($limit, ['*'], 'page', request()->get('page', 1));
+        $cancelledOrder = $cancelledOrderQuery->paginate($limit, ['*'], 'second_page', request()->get('second_page', 1));
 
         $ttl = $order->total();
         $ttlpage = ceil($ttl / $limit);
-        $cancelttl = $cancelledOrder->total();
-        $cancelttlPage = ceil($cancelttl / $limit);
+        $second_ttl = $cancelledOrder->total();
+        $second_ttlpage = ceil($second_ttl / $limit);
 
-        return view('seller.order.order_all', compact('order','ttl','ttlpage','cancelledOrder','cancelttl','cancelttlPage'));
+        return view('seller.order.order_all', compact('order','ttl','ttlpage','cancelledOrder','second_ttl','second_ttlpage'));
     }
 
 
