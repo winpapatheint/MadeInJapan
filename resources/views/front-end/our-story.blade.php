@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb-contain">
-                        <h2>Sign Up</h2>
+                        <h2>Our Story</h2>
                         <nav>
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
@@ -13,7 +13,7 @@
                                         <i class="fa-solid fa-house"></i>
                                     </a>
                                 </li>
-                                <li class="breadcrumb-item active">Sign Up</li>
+                                <li class="breadcrumb-item active">Our Story</li>
                             </ol>
                         </nav>
                     </div>

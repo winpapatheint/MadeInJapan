@@ -1,5 +1,6 @@
 
 <x-auth-layout>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
     <style>
         .error{
             margin:0 auto;
@@ -70,11 +71,17 @@
                                     <div class="mb-4 row align-items-center">
                                         <label class="form-label-title col-sm-3 mb-0">Body</label>
                                         <div class="col-md-9">
+                                            <span style="color: red; font-size: 10px;">
+                                                *Enter Body in English.
+                                            </span>
                                             <textarea class="form-control"  placeholder="Enter Body in English - Use control+shift+V to paste within this text area." 
                                             name="body" id="body">
                                             {!! old('body') ?? $story->body ?? ''  !!}</textarea>
                                             <span class="error" style="color:red" id="error-body"></span>
                                             <br>
+                                            <span style="color: red; font-size: 10px;">
+                                                *Enter Body in Japanese.
+                                            </span>
                                             <textarea class="form-control"  placeholder="Enter Body in Japanese - Use control+shift+V to paste within this text area." 
                                             name="body_jp" id="body_jp">
                                             {!! old('body_jp') ?? $story->body_jp ?? ''  !!}</textarea>
@@ -150,7 +157,6 @@
     <!-- Confirm Modal Box End-->
 </div>
 
-<script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 <script>
     $.ajaxSetup({
         headers: {
@@ -252,11 +258,17 @@
 {{-- <script>
     ClassicEditor
         .create( document.querySelector( '#body' ) )
+        .then( editor => {
+            console.log( 'Editor was initialized', editor );
+        } )
         .catch( error => {
             console.error( 'There was an error initializing the editor:', error );
         } );
     ClassicEditor
         .create( document.querySelector( '#body_jp' ) )
+        .then( editor => {
+            console.log( 'Editor was initialized', editor );
+        } )
         .catch( error => {
             console.error( 'There was an error initializing the editor:', error );
         } );

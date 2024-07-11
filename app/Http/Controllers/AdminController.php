@@ -661,18 +661,6 @@ class AdminController extends Controller
         return view('admin.top', compact('lists', 'ttlpage', 'ttl'));
     }
 
-    public function indexstory()
-    {
-        $limit = 10;
-
-        $lists = Story::orderBy('part', 'asc')->paginate($limit);
-
-        $ttl = $lists->total();
-        $ttlpage = (ceil($ttl / $limit));
-
-        return view('admin.story', compact('lists', 'ttlpage', 'ttl'));
-    }
-
     public function indexnewsletter()
     {
         $limit = 10;
@@ -3978,6 +3966,18 @@ class AdminController extends Controller
     {
         Notification::where('seen', 0)->update(['seen' => 1]);
         return redirect()->back();
+    }
+
+    public function indexstory()
+    {
+        $limit = 10;
+
+        $lists = Story::orderBy('part', 'asc')->paginate($limit);
+
+        $ttl = $lists->total();
+        $ttlpage = (ceil($ttl / $limit));
+
+        return view('admin.story', compact('lists', 'ttlpage', 'ttl'));
     }
 
     public function ourStory()
